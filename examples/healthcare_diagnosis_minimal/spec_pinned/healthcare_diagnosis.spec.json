@@ -1,0 +1,12 @@
+{
+  "spec_id": "healthcare_diagnosis.v1",
+  "description": "Auditor binding spec for the healthcare_diagnosis_minimal clinical-decision-support re-derivation (Axis-2 spec-pinned dispatch). The representative re-derived output is the ordered list of icd10_code values from payload/diagnosis.json (categorical codes only; the per-candidate confidence float is deliberately EXCLUDED to keep the output exact-comparable). It is recomputed by traversing the committed decision rules (inputs/rules.json) in sorted rule_id order against the committed symptom set (inputs/symptoms.json): a rule fires iff every condition's symptom is present and meets min_severity, and each fired rule contributes its icd10_code to the ordered list. The traversal rule lives in the verifier primitive (healthcare_diagnosis_recompute); the comparator is pinned HERE by the auditor (exact, no params -- an ordered list of categorical ICD-10 code strings compared element-wise), not producer-asserted. A producer who ships a spec the auditor did not anchor (different SHA / different primitive_id) gets a SHA the anchor does not list, so dispatch fails closed.",
+  "types": {
+    "healthcare_diagnosis_codes": {
+      "primitive_id": "healthcare_diagnosis_recompute",
+      "comparator": {
+        "kind": "exact"
+      }
+    }
+  }
+}

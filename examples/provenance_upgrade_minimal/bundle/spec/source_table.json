@@ -1,0 +1,19 @@
+{
+  "footnote_text": "Services revenue includes a one-time migration engagement recognized ratably over the contract term.",
+  "line_items": [
+    {
+      "amount_usd": 412000,
+      "label": "Subscriptions"
+    },
+    {
+      "amount_usd": 138500,
+      "label": "Services"
+    },
+    {
+      "amount_usd": 24500,
+      "label": "Other"
+    }
+  ],
+  "period": "2026-Q1",
+  "source": "nexi:demo:Q1FinancialsTable"
+}

@@ -1,0 +1,12 @@
+{
+  "spec_id": "pandemic_benefit_eligibility.v1",
+  "description": "Auditor binding spec for the Canadian pandemic-benefit (CERB-style) disbursement eligibility re-derivation (Axis-2 spec-pinned dispatch). The representative re-derived output is the ordered per-claimant decision list — one [claimant_id, verdict, benefit_amount_cents] triple per claimant, in data/applicants.json array order — derived from payload/disbursement_decisions.json. Re-derivation replays each claimant's attested attributes (data/applicants.json: prior_income_cents, period_income_cents, employment_status, eligibility_period_week) through the published deterministic rule set (spec/eligibility_rules.json) in fixed order: employment-status admission, min_prior_income_cents floor, income-drop threshold (period_income <= prior_weekly * income_drop_threshold_bps / 10000), and the eligibility-period window [period_start_week, period_end_week]; APPROVED claimants get weekly_benefit = min(max_weekly_benefit_cents, round-half-up(prior_weekly * replacement_rate_bps / 10000)). The benefit amount is a DETERMINISTIC INTEGER (round-half-up cents, never a float), so it is kept in the representative output and the comparator is `exact` (categorical verdict + integer cents carry no floating-point drift). The replay rule (rule order, round-half-up benefit formula, applicants array order) lives in the verifier primitive (pandemic_benefit_eligibility_recompute); the comparator is pinned HERE by the auditor (exact), not producer-asserted. A producer who ships a weaker spec gets a SHA the anchor does not list, so dispatch fails closed.",
+  "types": {
+    "pandemic_benefit_eligibility": {
+      "primitive_id": "pandemic_benefit_eligibility_recompute",
+      "comparator": {
+        "kind": "exact"
+      }
+    }
+  }
+}

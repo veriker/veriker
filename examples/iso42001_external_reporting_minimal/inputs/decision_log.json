@@ -1,0 +1,20 @@
+{
+  "report_id": "ai-transparency-2026H1-synthetic",
+  "reporting_period": {"start": "2026-01-01", "end": "2026-06-30"},
+  "disclosure_target": "regulator + public transparency report",
+  "note": "SYNTHETIC frozen internal decision log backing an external A.8 disclosure. Each record is one decision: 'automated' = made by the AI system, 'human_reviewed' = a human reviewed it before action. The disclosed figures (automated-decision count; human-oversight rate) must reconcile to this log. Re-derivability of the disclosed figures only — asserts nothing about whether the log is complete or the disclosure adequate.",
+  "decisions": [
+    {"decision_id": "d01", "automated": true,  "human_reviewed": true},
+    {"decision_id": "d02", "automated": true,  "human_reviewed": false},
+    {"decision_id": "d03", "automated": true,  "human_reviewed": true},
+    {"decision_id": "d04", "automated": false, "human_reviewed": true},
+    {"decision_id": "d05", "automated": true,  "human_reviewed": true},
+    {"decision_id": "d06", "automated": true,  "human_reviewed": false},
+    {"decision_id": "d07", "automated": false, "human_reviewed": false},
+    {"decision_id": "d08", "automated": true,  "human_reviewed": true},
+    {"decision_id": "d09", "automated": true,  "human_reviewed": true},
+    {"decision_id": "d10", "automated": true,  "human_reviewed": false},
+    {"decision_id": "d11", "automated": false, "human_reviewed": true},
+    {"decision_id": "d12", "automated": true,  "human_reviewed": true}
+  ]
+}

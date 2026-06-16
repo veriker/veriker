@@ -1,0 +1,12 @@
+{"subject": "ex:Alice", "predicate": "ex:knows", "object": "ex:Bob"}
+{"subject": "ex:Bob", "predicate": "ex:knows", "object": "ex:Carol"}
+{"subject": "ex:Carol", "predicate": "ex:knows", "object": "ex:Dave"}
+{"subject": "ex:Alice", "predicate": "ex:worksAt", "object": "ex:AcmeCo"}
+{"subject": "ex:Bob", "predicate": "ex:worksAt", "object": "ex:BetaCorp"}
+{"subject": "ex:Carol", "predicate": "ex:worksAt", "object": "ex:AcmeCo"}
+{"subject": "ex:Dave", "predicate": "ex:worksAt", "object": "ex:GammaCo"}
+{"subject": "ex:AcmeCo", "predicate": "ex:locatedIn", "object": "ex:CityA"}
+{"subject": "ex:BetaCorp", "predicate": "ex:locatedIn", "object": "ex:CityB"}
+{"subject": "ex:GammaCo", "predicate": "ex:locatedIn", "object": "ex:CityA"}
+{"subject": "ex:Eve", "predicate": "ex:knows", "object": "ex:Alice"}
+{"subject": "ex:Frank", "predicate": "ex:worksAt", "object": "ex:BetaCorp"}

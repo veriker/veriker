@@ -1,0 +1,14 @@
+{
+  "log_id": "ai-ops-eventlog-2026H1-synthetic",
+  "system": "credit-default-clf-v3",
+  "chain_rule": "sha256 fold: h_i = sha256(h_{i-1} || sha256(canonical(event_i))), genesis pinned in primitive",
+  "note": "SYNTHETIC frozen A.6 operational event log. Each event is one ordered lifecycle action. The disclosed log_head_digest is the tip of a hash chain over these events; editing, reordering, inserting, or deleting any event changes the head. Re-derivability + internal tamper-evidence only — asserts nothing about completeness (no event withheld) or truthfulness of the recorded actions.",
+  "events": [
+    {"seq": 1, "ts": "2026-01-04T09:00:00Z", "actor": "mlops:deploy-bot", "action": "model_deployed", "resource": "credit-default-clf-v3"},
+    {"seq": 2, "ts": "2026-01-18T14:32:11Z", "actor": "human:reviewer-7", "action": "drift_check_passed", "resource": "monitor/weekly"},
+    {"seq": 3, "ts": "2026-02-09T03:14:50Z", "actor": "system:autoscaler", "action": "capacity_scaled", "resource": "inference-pool"},
+    {"seq": 4, "ts": "2026-03-22T17:45:02Z", "actor": "human:approver-2", "action": "policy_threshold_updated", "resource": "decision/threshold"},
+    {"seq": 5, "ts": "2026-04-30T11:09:33Z", "actor": "human:reviewer-7", "action": "revalidation_signed", "resource": "vnv/2026Q2"},
+    {"seq": 6, "ts": "2026-06-01T22:00:00Z", "actor": "system:rotation", "action": "signing_key_rotated", "resource": "kms/key-3"}
+  ]
+}

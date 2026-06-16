@@ -1,0 +1,15 @@
+{
+  "spec_id": "climate_emission.v1",
+  "description": "Auditor binding spec for the climate_emission_minimal per-dir spec-pinned migration. Binds the representative structured output (the per-vendor Scope-3 emission attribution list) to an in-dir recompute primitive and the generic structured comparator over the allowlisted climate_attribution_v1 schema (fields vendor_id/tier/attributed_kg_co2e). Distinct from the central spec_id climate.emission.v1 (different id, different primitive_id, different comparator kind). Authority-pinned, not producer-asserted.",
+  "types": {
+    "climate_attribution": {
+      "primitive_id": "climate_attribution_recompute",
+      "comparator": {
+        "kind": "structured",
+        "params": {
+          "schema": "climate_attribution_v1"
+        }
+      }
+    }
+  }
+}

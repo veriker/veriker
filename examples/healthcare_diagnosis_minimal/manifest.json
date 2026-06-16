@@ -1,0 +1,118 @@
+{
+  "bundle_id": "healthcare-diagnosis-minimal-rc",
+  "created_at": "2026-05-17T00:00:00Z",
+  "cross_refs": {},
+  "files": {
+    "HealthcareDiagnosisReDerivationCheck.py": "23a719a7dcc45c9f6e7129bcd9b00b5d2ea56973ff17ce7b2dea5b8b87204343",
+    "README.md": "0ed13125b1cc6aeff2748a764fe5ad6c60d47ff00dbaa1bd114ad704fae1ad36",
+    "_build_bundle.py": "bf1dd69d8645b5229efddc5a5f515f4d0d393c26bb525237234db3f28fa3d65e",
+    "healthcare_diagnosis_recompute.py": "eb94fcf2a0579c05e5ba4d10dfdd1e65b33d10a95267b81a453822d8cdfd65ce",
+    "inputs/rules.json": "3ae76f5f73aa746b1fd400b6ef3dbce79a939aef0f86c480061d0f3625078539",
+    "inputs/symptoms.json": "b24d7c5fa348ee5aa72c643571f9838eee47a62da7761707927c1278f3dfbb3c",
+    "payload/diagnosis.json": "fbcf17d40297563ed0c66ab7446d356ea61e33a647eeb7d92e396e6fc2c06c90",
+    "pilot.json": "a6bd84be588d152ea4ffe8656fbed3ceec65a0cdb533244aa81b9a179d1bc631",
+    "re_derive/healthcare_diagnosis_pack.py": "c9baa87fb5975fa8511222810cd5913b2997c292a7336b61040494a83b446684",
+    "spec_pinned/healthcare_diagnosis.spec.json": "ed19c7cd444acebf3ed9dfdf7cd2102cc6d6388fa3c3547b9fe5c7ac3ef945fa",
+    "spec_pinned_check.py": "263fb4f8e4de0bb8e2f867e77f517d440ab328b377606d3574741f04148ed130",
+    "verify.py": "51e8d9912e2d561fd6bfd374f5e54ab91f4d6c23bf335efc5270a5a2480f0bae"
+  },
+  "fragment_anchors": {
+    "rule-A49-sym-002-A49.9": {
+      "kind": "opaque",
+      "kind_tag": "icd10_evidence_anchor",
+      "locator": {
+        "icd10_code": "A49.9",
+        "rule_id": "rule-A49",
+        "symptom_id": "sym-002"
+      },
+      "source_cid": "sha256:3ae76f5f73aa746b1fd400b6ef3dbce79a939aef0f86c480061d0f3625078539"
+    },
+    "rule-A49-sym-005-A49.9": {
+      "kind": "opaque",
+      "kind_tag": "icd10_evidence_anchor",
+      "locator": {
+        "icd10_code": "A49.9",
+        "rule_id": "rule-A49",
+        "symptom_id": "sym-005"
+      },
+      "source_cid": "sha256:3ae76f5f73aa746b1fd400b6ef3dbce79a939aef0f86c480061d0f3625078539"
+    },
+    "rule-I20-sym-003-I20.9": {
+      "kind": "opaque",
+      "kind_tag": "icd10_evidence_anchor",
+      "locator": {
+        "icd10_code": "I20.9",
+        "rule_id": "rule-I20",
+        "symptom_id": "sym-003"
+      },
+      "source_cid": "sha256:3ae76f5f73aa746b1fd400b6ef3dbce79a939aef0f86c480061d0f3625078539"
+    },
+    "rule-I20-sym-005-I20.9": {
+      "kind": "opaque",
+      "kind_tag": "icd10_evidence_anchor",
+      "locator": {
+        "icd10_code": "I20.9",
+        "rule_id": "rule-I20",
+        "symptom_id": "sym-005"
+      },
+      "source_cid": "sha256:3ae76f5f73aa746b1fd400b6ef3dbce79a939aef0f86c480061d0f3625078539"
+    },
+    "rule-J18-sym-001-J18.9": {
+      "kind": "opaque",
+      "kind_tag": "icd10_evidence_anchor",
+      "locator": {
+        "icd10_code": "J18.9",
+        "rule_id": "rule-J18",
+        "symptom_id": "sym-001"
+      },
+      "source_cid": "sha256:3ae76f5f73aa746b1fd400b6ef3dbce79a939aef0f86c480061d0f3625078539"
+    },
+    "rule-J18-sym-002-J18.9": {
+      "kind": "opaque",
+      "kind_tag": "icd10_evidence_anchor",
+      "locator": {
+        "icd10_code": "J18.9",
+        "rule_id": "rule-J18",
+        "symptom_id": "sym-002"
+      },
+      "source_cid": "sha256:3ae76f5f73aa746b1fd400b6ef3dbce79a939aef0f86c480061d0f3625078539"
+    },
+    "rule-J18-sym-005-J18.9": {
+      "kind": "opaque",
+      "kind_tag": "icd10_evidence_anchor",
+      "locator": {
+        "icd10_code": "J18.9",
+        "rule_id": "rule-J18",
+        "symptom_id": "sym-005"
+      },
+      "source_cid": "sha256:3ae76f5f73aa746b1fd400b6ef3dbce79a939aef0f86c480061d0f3625078539"
+    },
+    "rule-R51-sym-004-R51.9": {
+      "kind": "opaque",
+      "kind_tag": "icd10_evidence_anchor",
+      "locator": {
+        "icd10_code": "R51.9",
+        "rule_id": "rule-R51",
+        "symptom_id": "sym-004"
+      },
+      "source_cid": "sha256:3ae76f5f73aa746b1fd400b6ef3dbce79a939aef0f86c480061d0f3625078539"
+    },
+    "rule-R51-sym-005-R51.9": {
+      "kind": "opaque",
+      "kind_tag": "icd10_evidence_anchor",
+      "locator": {
+        "icd10_code": "R51.9",
+        "rule_id": "rule-R51",
+        "symptom_id": "sym-005"
+      },
+      "source_cid": "sha256:3ae76f5f73aa746b1fd400b6ef3dbce79a939aef0f86c480061d0f3625078539"
+    }
+  },
+  "payload": {},
+  "schema_version": "vcp-v1.1-canary4",
+  "spec_files": {},
+  "typed_checks": [
+    "file_integrity_many_small",
+    "re_derivation_invocation"
+  ]
+}

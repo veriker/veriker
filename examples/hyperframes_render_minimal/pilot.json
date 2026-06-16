@@ -1,0 +1,14 @@
+{
+  "schema": "pilot.v1",
+  "pilot": "hyperframes_render_minimal",
+  "title": "hyperframes_render_minimal — HTML→MP4 deterministic-render audit bundle",
+  "domain": "rendering",
+  "expected_verdict": "PASS",
+  "bundle_count": 0,
+  "has_top_level_manifest": false,
+  "has_build_script": true,
+  "schema_versions": [],
+  "typed_checks": [],
+  "attack_classes_covered": [],
+  "last_verified": null
+}

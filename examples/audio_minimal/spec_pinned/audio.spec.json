@@ -1,0 +1,12 @@
+{
+  "spec_id": "audio.v1",
+  "description": "Auditor binding spec for the audio_minimal VAD re-derivation (Axis-2 spec-pinned dispatch). The representative re-derived output is the set of speech-segment boundaries in payload/transcript.json — the unordered set of [start_frame, end_frame] pairs (segment_id and text are NOT compared; only the boundary pairs are auditable). It is recomputed by a frame-energy-threshold VAD over the committed int16 little-endian PCM bytes in audio/samples.bin under the parameters in spec/segmentation.json (frame_size, energy_threshold, min_segment_frames, n_samples), mirroring the legacy audio_re_derivation pack's _run_vad EXACTLY: per-frame energy = sum(s*s) over frame_size samples, accumulate consecutive runs whose energy >= energy_threshold, emit a [start, end] pair (start inclusive, end exclusive) for every run of length >= min_segment_frames, flushing a trailing run at n_frames. The recompute primitive (audio_recompute) defines the traversal; the comparator is pinned HERE by the auditor (set, no params — order-independent collection equality), not producer-asserted. Honest limitation: set equality is multiplicity-blind, which is acceptable for THIS shape only because VAD boundary pairs are distinct by construction (disjoint, strictly-increasing runs cannot produce a duplicate pair); it is not a general multiplicity-attack defense for shapes whose values can repeat. A producer who ships a spec the auditor did not anchor (different SHA / different primitive_id) gets a SHA the anchor does not list, so dispatch fails closed.",
+  "types": {
+    "audio_vad_boundaries": {
+      "primitive_id": "audio_recompute",
+      "comparator": {
+        "kind": "set"
+      }
+    }
+  }
+}

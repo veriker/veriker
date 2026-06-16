@@ -1,0 +1,12 @@
+{
+  "spec_id": "legal_contract.v1",
+  "description": "Auditor binding spec for the legal_contract_minimal clause-precedent retrieval re-derivation (Axis-2 spec-pinned dispatch). The representative re-derived output is the per-clause ranked case_cites structure from payload/retrieval_result.json: for each clause (in clause_id order) the ordered list of matching precedent case_cite ids. It is recomputed by ranking every precedent in inputs/precedents.json by its keyword-overlap count with the clause's query_keywords (descending), breaking ties by case_cite ascending, and retaining only precedents with overlap >= 1. The ranking rule lives in the verifier primitive (legal_contract_recompute); the comparator is pinned HERE by the auditor (exact, no params - the per-clause ordered structure compared element-wise), not producer-asserted. A producer who ships a spec the auditor did not anchor (different SHA / different primitive_id) gets a SHA the anchor does not list, so dispatch fails closed.",
+  "types": {
+    "legal_contract_case_cites": {
+      "primitive_id": "legal_contract_recompute",
+      "comparator": {
+        "kind": "exact"
+      }
+    }
+  }
+}
