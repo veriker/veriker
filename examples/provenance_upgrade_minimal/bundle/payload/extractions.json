@@ -1,0 +1,15 @@
+{
+  "source_sha256": "f8669406e47f5de244974d672125d1cacbd2f5460d4c5e3d2efaaddb64eff1c3",
+  "claims": [
+    {
+      "claim_id": "extract_total",
+      "kind": "numeric",
+      "value_usd": 575000
+    },
+    {
+      "claim_id": "extract_footnote",
+      "kind": "prose",
+      "text": "Services revenue includes a one-time migration engagement recognized ratably over the contract term."
+    }
+  ]
+}

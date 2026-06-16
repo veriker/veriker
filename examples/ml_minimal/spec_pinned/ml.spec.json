@@ -1,0 +1,12 @@
+{
+  "spec_id": "ml.v1",
+  "description": "Auditor binding spec for the ml_minimal inference re-derivation (Axis-2 spec-pinned dispatch). The representative re-derived output is the list of predicted class indices (the integer argmax per input sample) drawn from payload/predictions.json. It is recomputed in-process by re-executing an integer-only linear classifier over the committed weights (weights/model.json: linear-classifier-v1, W/b) and committed inputs (inputs/features.json): logits[k] = sum(W[k][j]*x[j]) + b[k], predicted_class = argmax(logits) with lowest-index tie-break. The inference rule lives in the verifier primitive (ml_recompute); the comparator is pinned HERE by the auditor (exact, no params — an ordered list of integer class indices compared element-wise), not producer-asserted. A producer who ships a spec the auditor did not anchor (different SHA / different primitive_id) gets a SHA the anchor does not list, so dispatch fails closed.",
+  "types": {
+    "ml_prediction_classes": {
+      "primitive_id": "ml_recompute",
+      "comparator": {
+        "kind": "exact"
+      }
+    }
+  }
+}

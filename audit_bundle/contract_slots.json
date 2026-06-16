@@ -1,0 +1,17 @@
+{
+  "$schema": "nexi.v_kernel.contract_slots.v1",
+  "slots": [
+    {"id": "C9",   "field": "file_integrity",          "since_version": "v0.1", "status": "active"},
+    {"id": "C9.1", "field": "append_only_files",        "since_version": "v0.4", "status": "active",
+     "note": "extension to C9 file_integrity, not a new contract"},
+    {"id": "C9.2", "field": "canonical_bytes_version",  "since_version": "v0.3-retired", "status": "tombstoned",
+     "tombstone_of": "custom anti-strip path retired post-DSSE-v2-tribunal 2026-05-18"},
+    {"id": "C9.3", "field": "bundle_sha_composition_version", "since_version": "v0.3-retired", "status": "tombstoned",
+     "tombstone_of": "composition now lives inside the DSSE-signed payload"},
+    {"id": "C9.4", "field": "status_change_in_band_marker", "since_version": "v0.3-retired", "status": "tombstoned",
+     "tombstone_of": "see §8 Site-7 correction; in-band marker is derived/non-authoritative"},
+    {"id": "C9.5", "field": "dsse_envelope_version",    "since_version": "v0.4", "status": "active",
+     "replaces": null,
+     "note": "fresh slot; NOT a re-purpose of C9.2. Canonicalization tuple is an implied function of this field (P0-5)."}
+  ]
+}

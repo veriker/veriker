@@ -1,0 +1,11 @@
+{
+  "spec_id": "auto_ubi.v1",
+  "types": {
+    "auto_ubi_tier_list": {
+      "primitive_id": "auto_ubi_recompute",
+      "comparator": {
+        "kind": "exact"
+      }
+    }
+  }
+}

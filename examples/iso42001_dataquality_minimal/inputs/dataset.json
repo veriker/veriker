@@ -1,0 +1,28 @@
+{
+  "dataset_id": "credit-default-train-2026Q2-synthetic",
+  "data_card_ref": "data/credit-default/2026Q2",
+  "required_fields": ["feature_a", "feature_b", "label"],
+  "note": "SYNTHETIC frozen dataset for A.7 data-quality re-derivation. Deliberately seeded with 3 incomplete records (a null required field each) and 2 exact duplicates so the quality metrics are non-trivial. Re-derivability of the reported figures only — asserts nothing about whether the labels are correct or the data is fit for training.",
+  "records": [
+    {"record_id": "r01", "feature_a": "a1",  "feature_b": "b1",  "label": 1},
+    {"record_id": "r02", "feature_a": "a2",  "feature_b": "b2",  "label": 0},
+    {"record_id": "r03", "feature_a": "a3",  "feature_b": "b3",  "label": 1},
+    {"record_id": "r04", "feature_a": "a4",  "feature_b": "b4",  "label": 0},
+    {"record_id": "r05", "feature_a": "a5",  "feature_b": "b5",  "label": 1},
+    {"record_id": "r06", "feature_a": "a6",  "feature_b": "b6",  "label": 0},
+    {"record_id": "r07", "feature_a": "a7",  "feature_b": "b7",  "label": 1},
+    {"record_id": "r08", "feature_a": "a8",  "feature_b": "b8",  "label": 0},
+    {"record_id": "r09", "feature_a": "a9",  "feature_b": "b9",  "label": 1},
+    {"record_id": "r10", "feature_a": "a10", "feature_b": "b10", "label": 0},
+    {"record_id": "r11", "feature_a": "a1",  "feature_b": "b1",  "label": 1},
+    {"record_id": "r12", "feature_a": "a2",  "feature_b": "b2",  "label": 0},
+    {"record_id": "r13", "feature_a": "a11", "feature_b": "b11", "label": 1},
+    {"record_id": "r14", "feature_a": "a12", "feature_b": "b12", "label": 0},
+    {"record_id": "r15", "feature_a": "a13", "feature_b": "b13", "label": 1},
+    {"record_id": "r16", "feature_a": "a14", "feature_b": "b14", "label": 0},
+    {"record_id": "r17", "feature_a": null,  "feature_b": "b15", "label": 1},
+    {"record_id": "r18", "feature_a": "a16", "feature_b": null,  "label": 0},
+    {"record_id": "r19", "feature_a": "a17", "feature_b": "b17", "label": 1},
+    {"record_id": "r20", "feature_a": "a18", "feature_b": "b18", "label": null}
+  ]
+}

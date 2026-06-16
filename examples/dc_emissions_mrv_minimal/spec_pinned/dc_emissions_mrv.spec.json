@@ -1,0 +1,15 @@
+{
+  "spec_id": "dc_emissions_mrv.v1",
+  "description": "Auditor binding spec for the data-center NSR embodied-carbon re-derivation (Axis-2 spec-pinned dispatch). The representative re-derived output is the scalar total embodied carbon (kg CO2e), computed as sum over inputs/embodied_carbon_inventory.json of round(quantity * emission_factor_kg_co2e_per_unit, 6), the whole sum rounded to 6dp. The aggregation rule lives in the verifier primitive (dc_emissions_mrv_embodied_recompute); the comparator and tolerance are pinned HERE by the auditor (scalar_epsilon, epsilon=1e-6), not producer-asserted. A producer who ships a weaker spec gets a SHA the anchor does not list, so dispatch fails closed.",
+  "types": {
+    "dc_embodied_carbon_total": {
+      "primitive_id": "dc_emissions_mrv_embodied_recompute",
+      "comparator": {
+        "kind": "scalar_epsilon",
+        "params": {
+          "epsilon": 1e-6
+        }
+      }
+    }
+  }
+}

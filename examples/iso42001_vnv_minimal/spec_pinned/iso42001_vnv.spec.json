@@ -1,0 +1,15 @@
+{
+  "spec_id": "iso42001.vnv.auc.v1",
+  "description": "Auditor binding spec for ISO/IEC 42001 A.6 Verification-and-Validation metric re-derivation. Binds the output type 'model_validation_auc' to the verifier-side primitive 'iso42001_auc_recompute' (tie-averaged Mann-Whitney rank-AUC) under a scalar_epsilon comparator with epsilon=1e-9. The metric method and tolerance are AUTHORITY-PINNED here, not producer-asserted: a producer cannot swap a more flattering AUC definition or widen the tolerance without changing this spec's SHA, which the auditor's anchor would reject. Re-derivability of the reported metric only — NOT a judgement that the model or test set is fit for purpose, and NOT 42001 control conformance.",
+  "types": {
+    "model_validation_auc": {
+      "primitive_id": "iso42001_auc_recompute",
+      "comparator": {
+        "kind": "scalar_epsilon",
+        "params": {
+          "epsilon": 1e-9
+        }
+      }
+    }
+  }
+}

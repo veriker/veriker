@@ -1,0 +1,12 @@
+{
+  "spec_id": "pii_redaction.v1",
+  "description": "Auditor binding spec for the pii_redaction_minimal PII-span re-derivation (Axis-2 spec-pinned dispatch). The representative re-derived output is the aggregated redaction spans in payload/redaction_output.json — the unordered set of [token_start, token_end, category] span tuples. It is recomputed by a constrained-Viterbi decode over the committed BIOES logits tensor (payload/bioes_logits.json) under the committed transition-bias vector (redaction_output.bias_vector), then aggregated to spans via BIOES grouping, mirroring the legacy pii_redaction_re_derivation pack's _viterbi + _decode_spans EXACTLY. The traversal rule (33-state BIOES space, validity-constrained successors, 6-float additive transition bias) lives in the verifier primitive (pii_redaction_recompute); the comparator is pinned HERE by the auditor (set, no params — order-independent collection equality), not producer-asserted. A producer who ships a spec the auditor did not anchor (different SHA / different primitive_id) gets a SHA the anchor does not list, so dispatch fails closed.",
+  "types": {
+    "pii_redaction_spans": {
+      "primitive_id": "pii_redaction_recompute",
+      "comparator": {
+        "kind": "set"
+      }
+    }
+  }
+}

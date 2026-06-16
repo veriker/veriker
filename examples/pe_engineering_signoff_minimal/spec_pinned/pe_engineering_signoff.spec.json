@@ -1,0 +1,12 @@
+{
+  "spec_id": "pe_engineering_signoff.v1",
+  "description": "Auditor binding spec for the pe_engineering_signoff_minimal structural-signoff re-derivation (Axis-2 spec-pinned dispatch). The representative re-derived output is the ordered list of per-analysis structural_verdict values (each 'pass' or 'fail') for the committed cantilever-beam analyses in inputs/analyses.json, in committed input order. Each verdict is recomputed from first principles: sigma_max = (P * L) * c / I with c = height/2 and I = (width * height^3) / 12, factor_of_safety = (yield_stress_MPa * 1e6) / sigma_max, verdict = 'pass' if factor_of_safety >= material.safety_factor else 'fail'. The FoS is a float, but the pinned representative output is the CATEGORICAL verdict list (exact-safe; fixtures are clear of the FoS=safety_factor boundary). The recompute rule lives in the verifier primitive (pe_engineering_signoff_recompute); the comparator is pinned HERE by the auditor (exact, no params — an ordered list of primitive strings compared element-wise), not producer-asserted. The bundle's HMAC PE-stamp attestation half is out of scope for this binding. A producer who ships a spec the auditor did not anchor (different SHA / different primitive_id) gets a SHA the anchor does not list, so dispatch fails closed.",
+  "types": {
+    "pe_engineering_signoff_verdicts": {
+      "primitive_id": "pe_engineering_signoff_recompute",
+      "comparator": {
+        "kind": "exact"
+      }
+    }
+  }
+}

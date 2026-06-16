@@ -1,0 +1,12 @@
+{
+  "spec_id": "fintech_audit.v1",
+  "description": "Auditor binding spec for the bank policy-compliance re-derivation (Axis-2 spec-pinned dispatch). The representative re-derived output is the per-transaction policy-verdict list (payload/policy_verdicts.json): one record per (transaction, policy-rule) pair in build iteration order — transactions in transactions/ fixture order, policies in policies/ fixture order — each {txn_id, rule_id, matched_conditions, verdict}. Re-derivation re-runs every policy rule's condition predicates over the bundled transaction record (gt/lt/eq/ne/in/not_in, AND-ed; the large-transaction amount threshold and the restricted-jurisdiction membership check), collecting the matched condition fields and setting verdict = the rule's verdict_if_match when all conditions hold else NOT_APPLICABLE. The predicate logic (op semantics, AND accumulation, verdict mapping, record shape and ordering) lives in the verifier primitive (fintech_audit_recompute); the comparator is pinned HERE by the auditor (exact, ordered list of primitive records), not producer-asserted. A producer who ships a weaker spec gets a SHA the anchor does not list, so dispatch fails closed.",
+  "types": {
+    "fintech_audit_policy_verdicts": {
+      "primitive_id": "fintech_audit_recompute",
+      "comparator": {
+        "kind": "exact"
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+[
+  {
+    "record_id": "us-573-208",
+    "reporter_cite": "573 U.S. 208",
+    "case_name": "Alice Corp. v. CLS Bank International",
+    "court": "Supreme Court of the United States",
+    "year": 2014,
+    "holding_text": "An abstract idea does not become patent eligible merely by reciting a generic computer; the two step framework first asks whether the claims are directed to a patent ineligible concept and then whether the additional elements transform the claim into a patent eligible application."
+  },
+  {
+    "record_id": "fed-81-1216",
+    "reporter_cite": "81 F.4th 1216",
+    "case_name": "In re Cellect, LLC",
+    "court": "United States Court of Appeals for the Federal Circuit",
+    "year": 2023,
+    "holding_text": "Obviousness type double patenting is assessed against a patent's expiration date as adjusted by patent term adjustment, so a later expiring claim that is patentably indistinct from an earlier expiring claim of the same family can be invalidated."
+  },
+  {
+    "record_id": "fed-134-1205",
+    "reporter_cite": "134 F.4th 1205",
+    "case_name": "Recentive Analytics, Inc. v. Fox Corp.",
+    "court": "United States Court of Appeals for the Federal Circuit",
+    "year": 2025,
+    "holding_text": "Applying generic machine learning to a new data environment, without an improvement to the machine learning technology itself, is patent ineligible under section 101."
+  },
+  {
+    "record_id": "fed-43-1207",
+    "reporter_cite": "43 F.4th 1207",
+    "case_name": "Thaler v. Vidal",
+    "court": "United States Court of Appeals for the Federal Circuit",
+    "year": 2022,
+    "holding_text": "An inventor under the Patent Act must be a natural person, so an artificial intelligence system cannot be listed as the inventor on a patent application."
+  },
+  {
+    "record_id": "us-594-559",
+    "reporter_cite": "594 U.S. 559",
+    "case_name": "Minerva Surgical, Inc. v. Hologic, Inc.",
+    "court": "Supreme Court of the United States",
+    "year": 2021,
+    "holding_text": "The doctrine of assignor estoppel remains valid but is limited to situations where the assignor's earlier representation about a patent's validity is contradicted by the later invalidity defense."
+  },
+  {
+    "record_id": "fed-649-1276",
+    "reporter_cite": "649 F.3d 1276",
+    "case_name": "Therasense, Inc. v. Becton, Dickinson & Co.",
+    "court": "United States Court of Appeals for the Federal Circuit",
+    "year": 2011,
+    "holding_text": "To establish inequitable conduct the accused infringer must prove both but for materiality and a specific intent to deceive the Patent Office by clear and convincing evidence."
+  }
+]

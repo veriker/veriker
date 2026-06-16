@@ -1,0 +1,12 @@
+{
+  "spec_id": "anticheat_adjudication.v1",
+  "description": "Auditor binding spec for the competitive-game anti-cheat ban-adjudication re-derivation (Axis-2 spec-pinned dispatch). The representative re-derived output is the ORDERED list of per-case {model_recommendation, matched_rule_id} (the threshold-rule verdict half of payload/ban_decisions.json) for every flagged case in evidence/detection_signals.jsonl, taken in file order. Re-derivation walks the committed detection policy rules from evidence/detection_policy.json sorted by rule_id, returns the first rule all of whose AND-conditions (signal >= / <= threshold) hold over the case's signals, mapping to {model_recommendation: rule.verdict, matched_rule_id: rule.rule_id}; if no rule fires the case re-derives to {model_recommendation: clear, matched_rule_id: null}. The HMAC adjudicator-attestation half of the pilot is OUT OF SCOPE for this recompute (trust mechanics, not a re-derived value). The replay rule (rule_id sort order, AND-of-conditions, first-match-wins, clear fallback) lives in the verifier primitive (anticheat_adjudication_recompute); the comparator is pinned HERE by the auditor (exact), not producer-asserted. A producer who ships a weaker spec gets a SHA the anchor does not list, so dispatch fails closed.",
+  "types": {
+    "anticheat_adjudication_verdict_list": {
+      "primitive_id": "anticheat_adjudication_recompute",
+      "comparator": {
+        "kind": "exact"
+      }
+    }
+  }
+}

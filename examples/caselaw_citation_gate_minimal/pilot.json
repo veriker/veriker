@@ -1,0 +1,14 @@
+{
+  "schema": "pilot.v1",
+  "pilot": "caselaw_citation_gate_minimal",
+  "title": "caselaw_citation_gate_minimal — Case-Law Citation Credibility-Gate Re-Derivation (Axis-2 spec-pinned)",
+  "domain": "legal_proofs",
+  "expected_verdict": "PASS",
+  "bundle_count": 0,
+  "has_top_level_manifest": false,
+  "has_build_script": true,
+  "schema_versions": [],
+  "typed_checks": [],
+  "attack_classes_covered": [],
+  "last_verified": null
+}

@@ -1,0 +1,12 @@
+{
+  "spec_id": "combi_screen.v1",
+  "description": "Auditor binding spec for the combi_screen_minimal combinatorial drug-discovery screening re-derivation (Axis-2 spec-pinned dispatch). The representative re-derived output is the advanced (top-K) compound id set in payload/combi_screen_result.json — the unordered set of compound_ids advanced after screening. It is recomputed by re-enumerating the Cartesian product of the committed building blocks (scaffolds x r_groups_1 x r_groups_2), re-applying the Lipinski filter, re-scoring every survivor with the committed seeded surrogate scorer, ranking survivors ASCENDING by score (ties by compound_id), taking the top-K (advanced_count), and collecting their compound_ids — mirroring the legacy combi_screen_re_derivation/_build_bundle run_screen EXACTLY. The selection is rank-order-sensitive, but the SET of advanced ids is well-defined; the comparator is pinned HERE by the auditor (set, no params — order-independent collection equality), not producer-asserted. A producer who ships a spec the auditor did not anchor (different SHA / different primitive_id) gets a SHA the anchor does not list, so dispatch fails closed.",
+  "types": {
+    "combi_screen_advanced_set": {
+      "primitive_id": "combi_screen_recompute",
+      "comparator": {
+        "kind": "set"
+      }
+    }
+  }
+}

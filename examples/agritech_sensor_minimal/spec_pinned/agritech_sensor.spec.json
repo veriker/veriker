@@ -1,0 +1,15 @@
+{
+  "spec_id": "agritech_sensor.v1",
+  "description": "Auditor binding spec for the agritech soil-sensor yield-score re-derivation (Axis-2 spec-pinned dispatch). The representative re-derived output is the scalar yield_score, computed from inputs/sensor_stream.json (48 hourly readings) and payload/fusion_weights.json as round(w_soil_moisture*mean(soil_moisture_pct) + w_soil_temp*mean(soil_temp_c) + w_npk*mean(npk_ppm) + w_rainfall*sum(rainfall_mm) + bias, 6). The linear-weighted fusion aggregation rule lives in the verifier primitive (agritech_sensor_recompute); the comparator and tolerance are pinned HERE by the auditor (scalar_epsilon, epsilon=1e-5), not producer-asserted. A producer who ships a weaker spec gets a SHA the anchor does not list, so dispatch fails closed.",
+  "types": {
+    "agritech_yield_score": {
+      "primitive_id": "agritech_sensor_recompute",
+      "comparator": {
+        "kind": "scalar_epsilon",
+        "params": {
+          "epsilon": 1e-5
+        }
+      }
+    }
+  }
+}

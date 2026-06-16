@@ -1,0 +1,22 @@
+{
+  "edges": [
+    {
+      "contribution": 4200,
+      "edge_id": "e0",
+      "label": "Acquisition"
+    },
+    {
+      "contribution": 3500,
+      "edge_id": "e1",
+      "label": "Retention"
+    },
+    {
+      "contribution": 2300,
+      "edge_id": "e2",
+      "label": "Expansion"
+    }
+  ],
+  "period": "2026-Q1",
+  "source": "nexi:demo:ImpactAllocationQ1",
+  "total_impact": 10000
+}

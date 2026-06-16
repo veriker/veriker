@@ -1,0 +1,39 @@
+{
+  "schema": "pilot.v1",
+  "pilot": "iso42001_dataquality_minimal",
+  "title": "iso42001_dataquality_minimal — ISO/IEC 42001 A.7 Data-Quality Re-Derivation (Axis-2, multi-output)",
+  "domain": "ai_governance_iso42001",
+  "expected_verdict": "PASS",
+  "bundle_count": 1,
+  "has_top_level_manifest": true,
+  "has_build_script": true,
+  "schema_versions": [
+    "vcp-v1.1-canary4"
+  ],
+  "typed_checks": [
+    "file_integrity_many_small"
+  ],
+  "attack_classes_covered": [
+    "spec_pinned:tampered_value",
+    "spec_pinned:input_tamper",
+    "spec_pinned:omitted_output_entry",
+    "spec_pinned:weaker_spec_substitution",
+    "spec_pinned:no_anchor"
+  ],
+  "spec_pinned_dispatch": {
+    "multi_output": true,
+    "output_ids": [
+      "data_completeness_pct",
+      "data_duplicate_rate_pct",
+      "data_positive_rate_pct"
+    ],
+    "comparator_kind": "scalar_epsilon",
+    "epsilon": 1e-9,
+    "binding_spec": "spec_pinned/iso42001_dataquality.spec.json"
+  },
+  "primitive_id": "iso42001_dataquality_recompute",
+  "fixture_dataset_id": "credit-default-train-2026Q2-synthetic",
+  "fixture_records": 20,
+  "claim_boundary": "Proves the three reported A.7 data-quality figures (completeness / duplicate-rate / positive-rate) are re-derivable from the declared dataset and tamper-evident under the auditor's pinned rules. NOT a judgement that the dataset is fit for training, and NOT ISO/IEC 42001 control conformance. Synthetic data; no customer.",
+  "last_verified": null
+}

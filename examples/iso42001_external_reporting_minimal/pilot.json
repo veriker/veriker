@@ -1,0 +1,37 @@
+{
+  "schema": "pilot.v1",
+  "pilot": "iso42001_external_reporting_minimal",
+  "title": "iso42001_external_reporting_minimal — ISO/IEC 42001 A.8 External-Reporting Reconciliation (Axis-2, two comparators)",
+  "domain": "ai_governance_iso42001",
+  "expected_verdict": "PASS",
+  "bundle_count": 1,
+  "has_top_level_manifest": true,
+  "has_build_script": true,
+  "schema_versions": [
+    "vcp-v1.1-canary4"
+  ],
+  "typed_checks": [
+    "file_integrity_many_small"
+  ],
+  "attack_classes_covered": [
+    "spec_pinned:tampered_value_exact",
+    "spec_pinned:tampered_value_epsilon",
+    "spec_pinned:input_tamper",
+    "spec_pinned:weaker_spec_substitution",
+    "spec_pinned:no_anchor"
+  ],
+  "spec_pinned_dispatch": {
+    "multi_output": true,
+    "outputs": [
+      {"output_id": "disclosed_automated_decision_count", "type": "disclosed_automated_decision_count", "comparator_kind": "exact", "primitive_id": "iso42001_decision_count_recompute"},
+      {"output_id": "disclosed_human_oversight_rate_pct", "type": "disclosed_human_oversight_rate_pct", "comparator_kind": "scalar_epsilon", "primitive_id": "iso42001_oversight_rate_recompute"}
+    ],
+    "binding_spec": "spec_pinned/iso42001_external_reporting.spec.json"
+  },
+  "fixture_report_id": "ai-transparency-2026H1-synthetic",
+  "fixture_decisions": 12,
+  "honest_disclosed_automated_decision_count": 9,
+  "honest_disclosed_human_oversight_rate_pct": 66.66666666666667,
+  "claim_boundary": "Proves the two externally-disclosed A.8 figures (automated-decision count via exact; human-oversight rate via scalar_epsilon) reconcile to / are re-derivable from the declared internal decision log and are tamper-evident under the auditor's pinned rules. NOT a judgement that the log is complete/truthful or the disclosure adequate, and NOT ISO/IEC 42001 control conformance. Synthetic data; no customer.",
+  "last_verified": null
+}

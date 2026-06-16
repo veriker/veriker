@@ -1,0 +1,15 @@
+{
+  "spec_id": "fp_ml.v1",
+  "description": "Auditor binding spec for the fp_ml linear-classifier re-derivation (Axis-2 spec-pinned dispatch). The representative re-derived output is a single float32 logit scalar: predictions[0].logits[0], i.e. the class-0 logit for input feature vector 0. It is recomputed in float32 discipline as f32(sum(W[0][j]*x[0][j] for j) + b[0]) over weights/model.json (linear-classifier-fp-v1) and inputs/features.json, where f32(v) = struct.unpack('f', struct.pack('f', v))[0] snaps to single precision at the serialization boundary while accumulation is in Python double. The linear-classifier float32 aggregation rule lives in the verifier primitive (fp_ml_recompute); the comparator and tolerance are pinned HERE by the auditor (scalar_epsilon, epsilon=1e-9), not producer-asserted. A producer who ships a weaker spec gets a SHA the anchor does not list, so dispatch fails closed.",
+  "types": {
+    "fp_ml_logit": {
+      "primitive_id": "fp_ml_recompute",
+      "comparator": {
+        "kind": "scalar_epsilon",
+        "params": {
+          "epsilon": 1e-9
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "schema": "v-kernel-audit-bundle/revocation-root/v0.3",
+  "spec_version": "1.0.31",
+  "role_name": "revocation-root",
+  "role_separation_note": "SEPARATE TUF role from the C18 release role AND the sigstore-trust-root role (OQ-2 family). This role's key signs the verifier-side revocation list (vkernel_revocations.json) consumed by audit_bundle/revocation.py via an INJECTED revocation_root_resolver — the revocation-root pubkey is never embedded in the list itself. Distinct rotation cadence: re-pinned on revocation-key rotation, not coupled to C18 release cuts. WS-3's is_revoked verify logic is independent of this artifact (it uses an injected resolver + in-test fixture root); this file is the PRODUCTION distribution of that root.",
+  "comment_bootstrap_disposition": "v0.4 bootstrap: the keyids/pubkeys below are software-generated ed25519 placeholders and the signatures are EMPTY. The production v0.3.0-rc1 ceremony regenerates with hardware-rooted keys (YubiKey FIDO2 + cloud KMS + cold-storage) per audit_bundle/extensions/_tuf_root/README.md and fills real signatures + the pinned revocation-list-signer fingerprint. The synthetic-marker RELEASE gate (tests/test_synthetic_c18_marker_gate.py) BLOCKS any release while this file (or root.json / sigstore_trust_root.json) still carries empty sigs or unfilled ceremony placeholders.",
+  "signatures": [
+    { "keyid": "a1f4c2e98b7d6053fae21c44d908b7361e5a0cf2d83b14976028de5cab73f190", "sig": "" },
+    { "keyid": "b73e0d15c9a847f2e6b310d54fa0297c81d4b6e3927ac0518fd62b94e7c3a085", "sig": "" },
+    { "keyid": "c0982a6f4e1d7b35908cae27d1463f50ba9e8d72c41506937fb28ea5d09c4671", "sig": "" }
+  ],
+  "signed": {
+    "_type": "revocation-root",
+    "bootstrap_note": "Bootstrap revocation_root.json — software-generated ed25519 keypairs, empty signatures. Production ceremony replaces with hardware-rooted keys per _tuf_root/README.md.",
+    "consistent_snapshot": true,
+    "expires": "2026-08-18T00:00:00Z",
+    "pinned_revocation_list_signer_fingerprint": "TBD-AT-CEREMONY-REPLACE-WITH-REVOCATION-SIGNER-KID",
+    "keys": {
+      "a1f4c2e98b7d6053fae21c44d908b7361e5a0cf2d83b14976028de5cab73f190": {
+        "keyid_hash_algorithms": ["sha256", "sha512"],
+        "keytype": "ed25519",
+        "keyval": { "public": "0c3e6a9d2b5f8c1a4e70b3d6a9c2f5e8104b7d0a3f6c9e2b5d8a1c4f70b3e6d0" },
+        "scheme": "ed25519"
+      },
+      "b73e0d15c9a847f2e6b310d54fa0297c81d4b6e3927ac0518fd62b94e7c3a085": {
+        "keyid_hash_algorithms": ["sha256", "sha512"],
+        "keytype": "ed25519",
+        "keyval": { "public": "2e5a9b3d0f8c1a4760b9e2d5f8a1c4e7903b6d0f2a5c8e1b4d7093a6c9f2e5b8" },
+        "scheme": "ed25519"
+      },
+      "c0982a6f4e1d7b35908cae27d1463f50ba9e8d72c41506937fb28ea5d09c4671": {
+        "keyid_hash_algorithms": ["sha256", "sha512"],
+        "keytype": "ed25519",
+        "keyval": { "public": "3f6b0c4e1a9d2b5870c0f3e6a9d2b5e8014c7a0d3f6b9e2c5a8d1b4e70a3d6c9" },
+        "scheme": "ed25519"
+      }
+    },
+    "roles": {
+      "revocation-root": {
+        "keyids": [
+          "a1f4c2e98b7d6053fae21c44d908b7361e5a0cf2d83b14976028de5cab73f190",
+          "b73e0d15c9a847f2e6b310d54fa0297c81d4b6e3927ac0518fd62b94e7c3a085",
+          "c0982a6f4e1d7b35908cae27d1463f50ba9e8d72c41506937fb28ea5d09c4671"
+        ],
+        "threshold": 2
+      }
+    },
+    "spec_version": "1.0.31",
+    "version": 1
+  },
+  "rotation_policy": {
+    "minimum_distinct_human_approvers": 2,
+    "minimum_total_approvers": 3,
+    "max_validity_days": 90,
+    "comment": "2-of-3 distinct approvers per rotation ceremony; root metadata expiry MUST be <= 90 days. Mirrors the C18 release-root rotation discipline (Pass-1 tightening item 14 sub-bullet 7). Hardware-rooted multi-site token holdings satisfy 'distinct' structurally at v0.3; humans-only interpretation deferred to v1.5+ per OQ-7."
+  },
+  "honest_hedge": "v0.4 ships the revocation-root role STRUCTURE — separate role file, 2-of-3 threshold, <=90-day expiry policy, the role_name the loader will assert. The actual Ed25519 public-key bytes + signatures + pinned signer fingerprint are filled at the C18 key ceremony and embedded into the OCI image at release-tag cut. Until then the synthetic-marker RELEASE gate keeps this from being promoted."
+}

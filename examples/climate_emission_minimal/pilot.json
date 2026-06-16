@@ -1,0 +1,34 @@
+{
+  "schema": "pilot.v1",
+  "pilot": "climate_emission_minimal",
+  "title": "climate_emission_minimal — V-Kernel S0 pilot",
+  "domain": "uncategorized",
+  "expected_verdict": "PASS",
+  "bundle_count": 1,
+  "has_top_level_manifest": true,
+  "has_build_script": true,
+  "schema_versions": [
+    "vcp-v1.1-canary4"
+  ],
+  "typed_checks": [
+    "file_integrity_many_small",
+    "re_derivation_invocation"
+  ],
+  "attack_classes_covered": [
+    "spec_pinned:tampered_value",
+    "spec_pinned:tampered_type",
+    "spec_pinned:monotone_strictness",
+    "spec_pinned:role_policy_substitution",
+    "spec_pinned:omitted_output_entry",
+    "spec_pinned:no_anchor"
+  ],
+  "spec_pinned_dispatch": {
+    "output_id": "climate-total-scope3-001",
+    "type": "climate_total_scope3",
+    "conforms_to": "spec/climate.spec.json",
+    "comparator_kind": "exact",
+    "binding_spec": "spec_pinned/climate.spec.json",
+    "demo": "examples/spec_pinned_demo.py climate"
+  },
+  "last_verified": null
+}

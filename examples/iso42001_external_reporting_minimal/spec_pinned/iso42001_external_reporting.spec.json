@@ -1,0 +1,14 @@
+{
+  "spec_id": "iso42001.external_reporting.v1",
+  "description": "Auditor binding spec for ISO/IEC 42001 A.8 (Information for Interested Parties) external-reporting reconciliation. Binds two disclosed figures to two distinct verifier-side primitives under two comparator KINDS: 'disclosed_automated_decision_count' -> 'iso42001_decision_count_recompute' compared EXACT (a disclosed integer must match exactly), and 'disclosed_human_oversight_rate_pct' -> 'iso42001_oversight_rate_recompute' compared scalar_epsilon (epsilon=1e-9). Rules and tolerances are AUTHORITY-PINNED here, not producer-asserted. Re-derivability of the disclosed figures only — NOT a judgement that the log is complete/truthful or the disclosure adequate, and NOT A.8 control conformance.",
+  "types": {
+    "disclosed_automated_decision_count": {
+      "primitive_id": "iso42001_decision_count_recompute",
+      "comparator": {"kind": "exact", "params": {}}
+    },
+    "disclosed_human_oversight_rate_pct": {
+      "primitive_id": "iso42001_oversight_rate_recompute",
+      "comparator": {"kind": "scalar_epsilon", "params": {"epsilon": 1e-9}}
+    }
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "bundle_id": "legal-contract-minimal-rc",
+  "created_at": "2026-05-18T00:00:00Z",
+  "cross_refs": {},
+  "files": {
+    "LegalContractReDerivationCheck.py": "296530f06aa208b7070e8f0d764b70a64147951ee71b48d19944aac2c3443387",
+    "README.md": "b036f5866623f64a1dafd4b2de8b0afe319e243cf07a2a37ed4c44e7433ad46d",
+    "_build_bundle.py": "7810b96a178423bd23cb898dc99f12c16f07eccca9b0607e7316cdcb66d82720",
+    "inputs/clauses.json": "8830475ef82bb4642e6b04af5dd8101761172d13beed45034878fc9654f3cbeb",
+    "inputs/precedents.json": "68d70ee0946125167c4ed0e9b01ddf34ab8ba38acc47d405cae54e7f7e4829eb",
+    "legal_contract_recompute.py": "80a5f101ef8521156b533050c91b7bda24a80cee9b7ed4ba28f5cb503d7104eb",
+    "payload/retrieval_result.json": "3ebef6de63f6fe979f4da74264e99f66e956d8f5cd9288b65944a9eaf3296dbc",
+    "pilot.json": "94f09a0b0d8dd5e9e5709ccfc2980a7881663f1a74e11ade44104375d4d86de9",
+    "re_derive/legal_contract_pack.py": "03672008edc6e4a673683ce07f9ed83a51b207b34e46ce9c37c74049bbd739ba",
+    "spec_pinned/legal_contract.spec.json": "b3035081109c8c129f88bcc95881da14e5bba79874f4ead1ed03b62e0cd45f86",
+    "spec_pinned_check.py": "bef32847827fac705409a8ff527d9283bafb24c2db7bbe4b7e98aae91a390abf",
+    "verify.py": "9fbe87129a835b364bb904d0c24413a67058a2c01dd53eb99cc75dd0b0aaf0b5"
+  },
+  "fragment_anchors": {
+    "cl-001::Adams v. Baker, 112 F.3d 200 (1st Cir. 1997)": {
+      "kind": "opaque",
+      "kind_tag": "legal_precedent_anchor",
+      "locator": {
+        "case_cite": "Adams v. Baker, 112 F.3d 200 (1st Cir. 1997)",
+        "clause_id": "cl-001"
+      },
+      "source_cid": "sha256:68d70ee0946125167c4ed0e9b01ddf34ab8ba38acc47d405cae54e7f7e4829eb"
+    },
+    "cl-001::Ingram v. Jones, 390 F.3d 610 (9th Cir. 2004)": {
+      "kind": "opaque",
+      "kind_tag": "legal_precedent_anchor",
+      "locator": {
+        "case_cite": "Ingram v. Jones, 390 F.3d 610 (9th Cir. 2004)",
+        "clause_id": "cl-001"
+      },
+      "source_cid": "sha256:68d70ee0946125167c4ed0e9b01ddf34ab8ba38acc47d405cae54e7f7e4829eb"
+    },
+    "cl-001::Lewis v. Morgan, 415 F.3d 900 (Fed. Cir. 2005)": {
+      "kind": "opaque",
+      "kind_tag": "legal_precedent_anchor",
+      "locator": {
+        "case_cite": "Lewis v. Morgan, 415 F.3d 900 (Fed. Cir. 2005)",
+        "clause_id": "cl-001"
+      },
+      "source_cid": "sha256:68d70ee0946125167c4ed0e9b01ddf34ab8ba38acc47d405cae54e7f7e4829eb"
+    },
+    "cl-002::Baker v. Carter, 88 F.2d 301 (2d Cir. 1988)": {
+      "kind": "opaque",
+      "kind_tag": "legal_precedent_anchor",
+      "locator": {
+        "case_cite": "Baker v. Carter, 88 F.2d 301 (2d Cir. 1988)",
+        "clause_id": "cl-002"
+      },
+      "source_cid": "sha256:68d70ee0946125167c4ed0e9b01ddf34ab8ba38acc47d405cae54e7f7e4829eb"
+    },
+    "cl-002::Jones v. Kelly, 180 F.3d 310 (10th Cir. 1999)": {
+      "kind": "opaque",
+      "kind_tag": "legal_precedent_anchor",
+      "locator": {
+        "case_cite": "Jones v. Kelly, 180 F.3d 310 (10th Cir. 1999)",
+        "clause_id": "cl-002"
+      },
+      "source_cid": "sha256:68d70ee0946125167c4ed0e9b01ddf34ab8ba38acc47d405cae54e7f7e4829eb"
+    },
+    "cl-003::Carter v. Davis, 201 F.3d 450 (3d Cir. 2000)": {
+      "kind": "opaque",
+      "kind_tag": "legal_precedent_anchor",
+      "locator": {
+        "case_cite": "Carter v. Davis, 201 F.3d 450 (3d Cir. 2000)",
+        "clause_id": "cl-003"
+      },
+      "source_cid": "sha256:68d70ee0946125167c4ed0e9b01ddf34ab8ba38acc47d405cae54e7f7e4829eb"
+    },
+    "cl-003::Kelly v. Lewis, 95 F.3d 220 (11th Cir. 1996)": {
+      "kind": "opaque",
+      "kind_tag": "legal_precedent_anchor",
+      "locator": {
+        "case_cite": "Kelly v. Lewis, 95 F.3d 220 (11th Cir. 1996)",
+        "clause_id": "cl-003"
+      },
+      "source_cid": "sha256:68d70ee0946125167c4ed0e9b01ddf34ab8ba38acc47d405cae54e7f7e4829eb"
+    },
+    "cl-003::Lewis v. Morgan, 415 F.3d 900 (Fed. Cir. 2005)": {
+      "kind": "opaque",
+      "kind_tag": "legal_precedent_anchor",
+      "locator": {
+        "case_cite": "Lewis v. Morgan, 415 F.3d 900 (Fed. Cir. 2005)",
+        "clause_id": "cl-003"
+      },
+      "source_cid": "sha256:68d70ee0946125167c4ed0e9b01ddf34ab8ba38acc47d405cae54e7f7e4829eb"
+    },
+    "cl-004::Davis v. Evans, 55 F.3d 100 (4th Cir. 1995)": {
+      "kind": "opaque",
+      "kind_tag": "legal_precedent_anchor",
+      "locator": {
+        "case_cite": "Davis v. Evans, 55 F.3d 100 (4th Cir. 1995)",
+        "clause_id": "cl-004"
+      },
+      "source_cid": "sha256:68d70ee0946125167c4ed0e9b01ddf34ab8ba38acc47d405cae54e7f7e4829eb"
+    },
+    "cl-005::Evans v. Foster, 330 F.3d 700 (5th Cir. 2003)": {
+      "kind": "opaque",
+      "kind_tag": "legal_precedent_anchor",
+      "locator": {
+        "case_cite": "Evans v. Foster, 330 F.3d 700 (5th Cir. 2003)",
+        "clause_id": "cl-005"
+      },
+      "source_cid": "sha256:68d70ee0946125167c4ed0e9b01ddf34ab8ba38acc47d405cae54e7f7e4829eb"
+    },
+    "cl-005::Kelly v. Lewis, 95 F.3d 220 (11th Cir. 1996)": {
+      "kind": "opaque",
+      "kind_tag": "legal_precedent_anchor",
+      "locator": {
+        "case_cite": "Kelly v. Lewis, 95 F.3d 220 (11th Cir. 1996)",
+        "clause_id": "cl-005"
+      },
+      "source_cid": "sha256:68d70ee0946125167c4ed0e9b01ddf34ab8ba38acc47d405cae54e7f7e4829eb"
+    },
+    "cl-006::Foster v. Grant, 145 F.3d 800 (6th Cir. 1998)": {
+      "kind": "opaque",
+      "kind_tag": "legal_precedent_anchor",
+      "locator": {
+        "case_cite": "Foster v. Grant, 145 F.3d 800 (6th Cir. 1998)",
+        "clause_id": "cl-006"
+      },
+      "source_cid": "sha256:68d70ee0946125167c4ed0e9b01ddf34ab8ba38acc47d405cae54e7f7e4829eb"
+    },
+    "cl-006::Jones v. Kelly, 180 F.3d 310 (10th Cir. 1999)": {
+      "kind": "opaque",
+      "kind_tag": "legal_precedent_anchor",
+      "locator": {
+        "case_cite": "Jones v. Kelly, 180 F.3d 310 (10th Cir. 1999)",
+        "clause_id": "cl-006"
+      },
+      "source_cid": "sha256:68d70ee0946125167c4ed0e9b01ddf34ab8ba38acc47d405cae54e7f7e4829eb"
+    },
+    "cl-007::Grant v. Hughes, 77 F.3d 150 (7th Cir. 1996)": {
+      "kind": "opaque",
+      "kind_tag": "legal_precedent_anchor",
+      "locator": {
+        "case_cite": "Grant v. Hughes, 77 F.3d 150 (7th Cir. 1996)",
+        "clause_id": "cl-007"
+      },
+      "source_cid": "sha256:68d70ee0946125167c4ed0e9b01ddf34ab8ba38acc47d405cae54e7f7e4829eb"
+    },
+    "cl-007::Lewis v. Morgan, 415 F.3d 900 (Fed. Cir. 2005)": {
+      "kind": "opaque",
+      "kind_tag": "legal_precedent_anchor",
+      "locator": {
+        "case_cite": "Lewis v. Morgan, 415 F.3d 900 (Fed. Cir. 2005)",
+        "clause_id": "cl-007"
+      },
+      "source_cid": "sha256:68d70ee0946125167c4ed0e9b01ddf34ab8ba38acc47d405cae54e7f7e4829eb"
+    },
+    "cl-008::Hughes v. Ingram, 260 F.3d 520 (8th Cir. 2001)": {
+      "kind": "opaque",
+      "kind_tag": "legal_precedent_anchor",
+      "locator": {
+        "case_cite": "Hughes v. Ingram, 260 F.3d 520 (8th Cir. 2001)",
+        "clause_id": "cl-008"
+      },
+      "source_cid": "sha256:68d70ee0946125167c4ed0e9b01ddf34ab8ba38acc47d405cae54e7f7e4829eb"
+    },
+    "cl-008::Ingram v. Jones, 390 F.3d 610 (9th Cir. 2004)": {
+      "kind": "opaque",
+      "kind_tag": "legal_precedent_anchor",
+      "locator": {
+        "case_cite": "Ingram v. Jones, 390 F.3d 610 (9th Cir. 2004)",
+        "clause_id": "cl-008"
+      },
+      "source_cid": "sha256:68d70ee0946125167c4ed0e9b01ddf34ab8ba38acc47d405cae54e7f7e4829eb"
+    }
+  },
+  "payload": {},
+  "schema_version": "vcp-v1.1-canary4",
+  "spec_files": {},
+  "typed_checks": [
+    "file_integrity_many_small",
+    "re_derivation_invocation"
+  ]
+}

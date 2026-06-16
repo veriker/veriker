@@ -1,0 +1,18 @@
+{
+  "spec_id": "iso42001.dataquality.v1",
+  "description": "Auditor binding spec for ISO/IEC 42001 A.7 (Data for AI Systems) data-quality metric re-derivation. Binds three output types (data_completeness_pct, data_duplicate_rate_pct, data_positive_rate_pct) to the SAME verifier-side primitive 'iso42001_dataquality_recompute' under the SAME scalar_epsilon comparator (epsilon=1e-9). Identical comparator across all three satisfies the substrate monotone-strictness invariant (a primitive bound by >=2 types must carry an identical comparator). Metric rules and tolerance are AUTHORITY-PINNED here, not producer-asserted. Re-derivability of the reported figures only — NOT a judgement that the dataset is fit for training, and NOT A.7 control conformance.",
+  "types": {
+    "data_completeness_pct": {
+      "primitive_id": "iso42001_dataquality_recompute",
+      "comparator": {"kind": "scalar_epsilon", "params": {"epsilon": 1e-9}}
+    },
+    "data_duplicate_rate_pct": {
+      "primitive_id": "iso42001_dataquality_recompute",
+      "comparator": {"kind": "scalar_epsilon", "params": {"epsilon": 1e-9}}
+    },
+    "data_positive_rate_pct": {
+      "primitive_id": "iso42001_dataquality_recompute",
+      "comparator": {"kind": "scalar_epsilon", "params": {"epsilon": 1e-9}}
+    }
+  }
+}
