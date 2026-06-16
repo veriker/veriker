@@ -1,0 +1,14 @@
+{
+  "schema": "pilot.v1",
+  "pilot": "raster_minimal",
+  "title": "raster_minimal — Geospatial Raster Zonal Aggregation Audit Bundle",
+  "domain": "geospatial",
+  "expected_verdict": "PASS",
+  "bundle_count": 0,
+  "has_top_level_manifest": false,
+  "has_build_script": true,
+  "schema_versions": [],
+  "typed_checks": [],
+  "attack_classes_covered": [],
+  "last_verified": null
+}

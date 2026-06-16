@@ -1,0 +1,9 @@
+{
+  "query": {"start": "ex:Alice", "predicate": "ex:knows", "max_depth": 3},
+  "answer_nodes": ["ex:Bob", "ex:Carol", "ex:Dave"],
+  "path_edges": [
+    {"subject": "ex:Alice", "predicate": "ex:knows", "object": "ex:Bob"},
+    {"subject": "ex:Bob", "predicate": "ex:knows", "object": "ex:Carol"},
+    {"subject": "ex:Carol", "predicate": "ex:knows", "object": "ex:Dave"}
+  ]
+}

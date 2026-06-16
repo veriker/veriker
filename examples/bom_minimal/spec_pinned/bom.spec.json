@@ -1,0 +1,12 @@
+{
+  "spec_id": "bom.v1",
+  "description": "Auditor binding spec for the bom_minimal dependency-tree re-derivation (Axis-2 spec-pinned dispatch). The representative re-derived output is the full resolved dependency tree: a dict {root, nodes, resolution_order} where nodes is an ordered list of per-package records {id, hash, depth, deps} in resolution order, and resolution_order is the deterministic BFS id sequence. It is recomputed by the verifier primitive (bom_recompute) which walks the committed lockfile DAG (lockfile/lockfile.json) from root via BFS, breaking ties alphabetically within each depth level (ascending depth, ids sorted). The comparator is pinned HERE by the auditor (exact — Python structural equality on parsed JSON objects, no params), not producer-asserted. A producer who ships a spec the auditor did not anchor (different SHA / different primitive_id) gets a SHA the anchor does not list, so dispatch fails closed.",
+  "types": {
+    "bom_resolved_tree": {
+      "primitive_id": "bom_recompute",
+      "comparator": {
+        "kind": "exact"
+      }
+    }
+  }
+}

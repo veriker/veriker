@@ -1,0 +1,12 @@
+{
+  "spec_id": "build.v1",
+  "description": "Auditor binding spec for the build_minimal deterministic build/recipe re-derivation (Axis-2 spec-pinned dispatch). The representative re-derived output is the SHA-256 hex digest of the build artifact bytes produced by re-executing the committed recipe (recipe/build_recipe.json) against the committed sources: concat sources/{a,b,c}.txt with separator '\\n' (utf-8), then canonical gzip with mtime=0 and compresslevel=6, then sha256 over the produced gzip bytes. The recompute rule lives in the verifier primitive (build_recompute); the comparator is pinned HERE by the auditor as exact (byte-exact hex string equality), not producer-asserted. A producer who ships a weaker spec gets a SHA the anchor does not list, so dispatch fails closed. SCOPE: this re-derives THAT the bundled artifact is exactly what the committed recipe+sources produce; it is NOT a claim about the recipe's semantics or build provenance beyond byte reproducibility.",
+  "types": {
+    "artifact_sha": {
+      "primitive_id": "build_recompute",
+      "comparator": {
+        "kind": "exact"
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "schema": "pilot.v1",
+  "pilot": "pe_engineering_signoff_minimal",
+  "title": "pe_engineering_signoff_minimal",
+  "domain": "uncategorized",
+  "expected_verdict": "PASS",
+  "bundle_count": 0,
+  "has_top_level_manifest": false,
+  "has_build_script": true,
+  "schema_versions": [],
+  "typed_checks": [],
+  "attack_classes_covered": [],
+  "last_verified": null
+}

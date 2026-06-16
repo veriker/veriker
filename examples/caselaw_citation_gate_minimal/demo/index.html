@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<!--
+  caselaw_citation_gate_minimal — interactive demo page (NOT a deck).
+  Single self-contained page. Embeds the REAL pilot fixtures
+  (corpus/rooted_records.json + assertions/citation_assertions.json) and
+  re-runs the SAME deterministic gate rule in the browser for illustration.
+  The authoritative verifier is verify.py; this page is a faithful mirror of
+  caselaw_gate_recompute.compute_gate_verdict(). All data synthetic; not legal
+  advice; no firm is a customer.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case-Law Citation Credibility Gate — V-Kernel pilot</title>
+<style>
+  :root{
+    --ink:#0a0e14; --ink-2:#120f1c; --panel:#16121f; --panel-2:#1b1630;
+    --line:rgba(255,255,255,.09); --line-2:rgba(255,255,255,.16);
+    --text:#e8edf4; --muted:#9d97b0; --faint:#6a6280;
+    --violet:#a78bfa; --violet-dim:rgba(167,139,250,.14);
+    --green:#5ad19a; --green-dim:rgba(90,209,154,.13);
+    --amber:#f4c95d; --amber-dim:rgba(244,201,93,.13);
+    --red:#ff7a72; --red-dim:rgba(255,122,114,.13);
+    --mono:"SF Mono",ui-monospace,"JetBrains Mono",Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:radial-gradient(130% 90% at 80% -10%,var(--ink-2) 0%,var(--ink) 55%) fixed;
+    color:var(--text); font-family:var(--sans); line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:5rem 1.5rem 6rem}
+  header{margin-bottom:3rem}
+  .eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--violet);margin-bottom:1rem}
+  h1{font-size:2.4rem;line-height:1.12;letter-spacing:-.02em;font-weight:650;margin-bottom:1rem}
+  h1 .q{color:var(--muted);font-weight:450}
+  .lede{font-size:1.12rem;color:var(--muted);max-width:42em}
+  .lede b{color:var(--text);font-weight:600}
+  .badges{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.6rem}
+  .badge{font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;
+    border:1px solid var(--line-2);border-radius:999px;padding:.32rem .7rem;color:var(--muted)}
+  .badge.ok{color:var(--green);border-color:var(--green-dim);background:var(--green-dim)}
+  section{margin-top:3.4rem}
+  h2{font-size:.78rem;font-family:var(--mono);letter-spacing:.18em;text-transform:uppercase;
+    color:var(--faint);margin-bottom:1.1rem;font-weight:600}
+  h3{font-size:1.18rem;letter-spacing:-.01em;margin-bottom:.5rem;font-weight:600}
+  p{color:var(--muted);margin-bottom:1rem}
+  p b,li b{color:var(--text);font-weight:600}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:1.4rem 1.5rem}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.9rem}
+  .grid3 .card{padding:1.1rem 1.2rem}
+  .grid3 .tag{font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;font-weight:600;margin-bottom:.5rem}
+  .grid3 p{font-size:.92rem;margin:0;color:var(--muted)}
+  .t-rooted{color:var(--green)} .t-misquote{color:var(--amber)} .t-unresolved{color:var(--red)}
+  table{width:100%;border-collapse:collapse;font-size:.9rem;margin-top:.4rem}
+  th{text-align:left;font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--faint);font-weight:600;padding:.5rem .7rem;border-bottom:1px solid var(--line-2)}
+  td{padding:.7rem .7rem;border-bottom:1px solid var(--line);vertical-align:top}
+  tr:last-child td{border-bottom:none}
+  .cite{font-family:var(--mono);font-size:.82rem;color:var(--text);white-space:nowrap}
+  .small{font-size:.82rem;color:var(--faint)}
+  .pill{display:inline-block;font-family:var(--mono);font-size:.7rem;font-weight:700;letter-spacing:.05em;
+    padding:.2rem .55rem;border-radius:6px}
+  .pill.ROOTED{color:var(--green);background:var(--green-dim)}
+  .pill.MISQUOTE{color:var(--amber);background:var(--amber-dim)}
+  .pill.UNRESOLVED{color:var(--red);background:var(--red-dim)}
+  .panel-run{background:var(--panel-2);border:1px solid var(--line-2);border-radius:16px;padding:1.6rem}
+  .controls{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.3rem}
+  button{font-family:var(--sans);font-size:.86rem;font-weight:550;cursor:pointer;
+    border:1px solid var(--line-2);background:rgba(255,255,255,.04);color:var(--text);
+    border-radius:9px;padding:.55rem .9rem;transition:.15s}
+  button:hover{background:rgba(255,255,255,.09);border-color:var(--violet)}
+  button.primary{background:var(--violet);color:#1a1030;border-color:var(--violet);font-weight:650}
+  button.primary:hover{filter:brightness(1.08)}
+  button.danger:hover{border-color:var(--red)}
+  .verdict-banner{display:flex;align-items:center;gap:.9rem;border-radius:11px;padding:1rem 1.2rem;
+    margin-bottom:1.2rem;font-weight:600;border:1px solid var(--line-2)}
+  .verdict-banner .dot{width:.7rem;height:.7rem;border-radius:50%;flex:none}
+  .verdict-banner.pass{background:var(--green-dim);border-color:var(--green-dim)}
+  .verdict-banner.pass .dot{background:var(--green)}
+  .verdict-banner.fail{background:var(--red-dim);border-color:var(--red-dim)}
+  .verdict-banner.fail .dot{background:var(--red)}
+  .verdict-banner .code{font-family:var(--mono);font-size:.78rem;color:var(--muted);font-weight:500;margin-left:auto}
+  .decision{font-family:var(--mono);font-weight:700;letter-spacing:.03em}
+  .decision.AUTO_APPROVE{color:var(--green)} .decision.ROUTE_TO_HUMAN{color:var(--amber)}
+  .diff{font-family:var(--mono);font-size:.8rem;background:rgba(0,0,0,.28);border:1px solid var(--line);
+    border-radius:9px;padding:.9rem 1rem;color:var(--muted);margin-top:.3rem;white-space:pre-wrap;display:none}
+  .diff.show{display:block}
+  .diff .re{color:var(--green)} .diff .cl{color:var(--red)}
+  ul{margin:0 0 1rem 1.1rem;color:var(--muted)} li{margin-bottom:.5rem}
+  .scope{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+  .scope .card h3{font-size:1rem}
+  .scope .yes h3{color:var(--green)} .scope .no h3{color:var(--red)}
+  footer{margin-top:4rem;padding-top:1.6rem;border-top:1px solid var(--line);
+    font-family:var(--mono);font-size:.74rem;color:var(--faint);line-height:1.8}
+  a{color:var(--violet);text-decoration:none}
+  @media(max-width:680px){.grid3,.scope{grid-template-columns:1fr}h1{font-size:1.9rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">V-Kernel · audit-bundle pilot · re-derivation</div>
+  <h1>Case-Law Citation Credibility Gate<br><span class="q">can an AI legal assistant claim "clean to file" while hiding a fabricated citation?</span></h1>
+  <p class="lede">An assistant asserts the citations behind a filing and a gate decision. This verifier <b>re-derives that decision</b> from committed evidence — resolving every cite against a rooted court-record corpus and screening each quoted holding for fabrication. A producer <b>cannot</b> claim approval while hiding a fabricated or misquoted authority: the recompute disagrees and the gate fails closed.</p>
+  <div class="badges">
+    <span class="badge ok">4 gates green</span>
+    <span class="badge">Axis-2 spec-pinned dispatch</span>
+    <span class="badge">verifier ≠ producer</span>
+    <span class="badge">synthetic · not legal advice</span>
+  </div>
+</header>
+
+<section>
+  <h2>The rule</h2>
+  <div class="grid3">
+    <div class="card"><div class="tag t-rooted">ROOTED</div><p>The cite resolves <b>and</b> the quoted holding is found, verbatim, in the rooted record.</p></div>
+    <div class="card"><div class="tag t-misquote">MISQUOTE</div><p>The cite resolves, but the quote is <b>not</b> in the record — real source, fabricated or inverted quote.</p></div>
+    <div class="card"><div class="tag t-unresolved">UNRESOLVED</div><p>The cite is <b>absent</b> from the rooted corpus — a possible fabrication. Default-deny.</p></div>
+  </div>
+  <p class="small" style="margin-top:.9rem"><b style="color:var(--text)">decision</b> = <span class="decision AUTO_APPROVE">AUTO_APPROVE</span> only when every cite is ROOTED — otherwise <span class="decision ROUTE_TO_HUMAN">ROUTE_TO_HUMAN</span>.</p>
+</section>
+
+<section>
+  <h2>The rooted corpus <span style="color:var(--faint)">— trust root</span></h2>
+  <p>Six real, public U.S. patent cases. The gate can only root a citation against what's here.</p>
+  <div class="card"><table id="corpus"><thead><tr><th>Reporter cite</th><th>Case</th><th>Rooted holding</th></tr></thead><tbody></tbody></table></div>
+</section>
+
+<section>
+  <h2>The producer's asserted citations</h2>
+  <p>What the AI assistant claims supports its filing — including one cite whose quote inverts the real holding, and one cite for a case that does not exist.</p>
+  <div class="card"><table id="assertions"><thead><tr><th>#</th><th>Reporter cite</th><th>Quoted holding</th></tr></thead><tbody></tbody></table></div>
+</section>
+
+<section>
+  <h2>Run the verifier</h2>
+  <div class="panel-run">
+    <div class="controls">
+      <button class="primary" onclick="runHonest()">▶ Verify honest bundle</button>
+      <button class="danger" onclick="tamperAuto()">Tamper: claim AUTO_APPROVE</button>
+      <button class="danger" onclick="tamperMisquote()">Tamper: hide just the C-03 misquote</button>
+      <button onclick="reset()">Reset</button>
+    </div>
+    <div id="banner" class="verdict-banner" style="display:none"></div>
+    <div class="card" style="padding:0"><table id="result"><thead><tr><th>#</th><th>Cite</th><th>Re-derived</th><th>Producer claimed</th></tr></thead><tbody></tbody></table></div>
+    <div id="diff" class="diff"></div>
+  </div>
+</section>
+
+<section>
+  <h2>Three ways to cheat — three ways it fails closed</h2>
+  <div class="grid3">
+    <div class="card">
+      <div class="tag" style="color:var(--violet)">REDERIVATION_MISMATCH</div>
+      <p>Doctor the <b>claimed verdict</b> (e.g. claim AUTO_APPROVE) and reseal its hash. The recompute yields the honest verdict; the auditor-anchored <span class="cite">exact</span> comparator disagrees. <span class="small">(Try the buttons above.)</span></p>
+    </div>
+    <div class="card">
+      <div class="tag" style="color:var(--violet)">BAD_FILE_SHA</div>
+      <p>Doctor the <b>evidence</b> — flip a holding in the corpus — without updating the manifest. The per-file SHA walk catches the byte change.</p>
+    </div>
+    <div class="card">
+      <div class="tag" style="color:var(--violet)">AnchorViolation</div>
+      <p>Ship a <b>weaker spec</b> (a looser comparator) in the bundle. Its hash isn't the one the auditor anchored out-of-band → not authoritative → refused.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>What this proves — and what it doesn't</h2>
+  <div class="scope">
+    <div class="card yes">
+      <h3>✓ Proves</h3>
+      <p>Given <b>this</b> corpus, the gate decision is <b>re-derivable and tamper-evident</b> under a rule the auditor pins and the producer cannot weaken. The thing that produces the answer is not the thing that checks it.</p>
+    </div>
+    <div class="card no">
+      <h3>✗ Does not prove</h3>
+      <p>That the corpus records are <b>genuine</b> court records. That's a trust-root question — a verifier can't establish an external fact on its own. In production the fixture corpus is replaced by a <b>trust-root resolver</b> against a rooted authority (CourtListener / PACER).</p>
+    </div>
+  </div>
+  <p style="margin-top:1rem">In one line: the gate grounds citations against a rooted corpus and the verifier attests the gate ran and re-derives — it does not, on its own, establish that the corpus is genuine.</p>
+</section>
+
+<footer>
+  examples/caselaw_citation_gate_minimal · Axis-2 spec-pinned dispatch<br>
+  gates: build 0 · verify PASS · 5/5 pilot tests · 43/43 regression · substrate test_spec_pinned_dispatch 13/13<br>
+  Synthetic data. Real cited cases are public record; "Synapse AI v. Cortex Labs" is a deliberate fabrication. Not legal advice; no firm is a customer.
+</footer>
+
+</div>
+
+<script>
+// ---- Real embedded fixtures (verbatim from the pilot's JSON) ----
+const CORPUS = [
+  {cite:"573 U.S. 208", name:"Alice Corp. v. CLS Bank Int'l", holding:"An abstract idea does not become patent eligible merely by reciting a generic computer; the two step framework first asks whether the claims are directed to a patent ineligible concept and then whether the additional elements transform the claim into a patent eligible application."},
+  {cite:"81 F.4th 1216", name:"In re Cellect, LLC", holding:"Obviousness type double patenting is assessed against a patent's expiration date as adjusted by patent term adjustment, so a later expiring claim that is patentably indistinct from an earlier expiring claim of the same family can be invalidated."},
+  {cite:"134 F.4th 1205", name:"Recentive Analytics v. Fox Corp.", holding:"Applying generic machine learning to a new data environment, without an improvement to the machine learning technology itself, is patent ineligible under section 101."},
+  {cite:"43 F.4th 1207", name:"Thaler v. Vidal", holding:"An inventor under the Patent Act must be a natural person, so an artificial intelligence system cannot be listed as the inventor on a patent application."},
+  {cite:"594 U.S. 559", name:"Minerva Surgical v. Hologic", holding:"The doctrine of assignor estoppel remains valid but is limited to situations where the assignor's earlier representation about a patent's validity is contradicted by the later invalidity defense."},
+  {cite:"649 F.3d 1276", name:"Therasense v. Becton, Dickinson", holding:"To establish inequitable conduct the accused infringer must prove both but for materiality and a specific intent to deceive the Patent Office by clear and convincing evidence."}
+];
+const ASSERTIONS = [
+  {id:"C-01", cite:"573 U.S. 208",  name:"Alice Corp. v. CLS Bank Int'l",    quote:"an abstract idea does not become patent eligible merely by reciting a generic computer"},
+  {id:"C-02", cite:"43 F.4th 1207", name:"Thaler v. Vidal",                  quote:"an inventor under the Patent Act must be a natural person"},
+  {id:"C-03", cite:"134 F.4th 1205",name:"Recentive Analytics v. Fox Corp.", quote:"applying generic machine learning to a new data environment is patent eligible under section 101"},
+  {id:"C-04", cite:"142 F.4th 880", name:"Synapse AI v. Cortex Labs",        quote:"training a neural network on proprietary data is presumptively patent eligible"}
+];
+
+// ---- Faithful JS mirror of caselaw_gate_recompute.compute_gate_verdict ----
+const norm = s => s.toLowerCase().replace(/\s+/g," ").trim();
+function computeVerdict(){
+  const idx = {}; CORPUS.forEach(r => idx[norm(r.cite)] = r);
+  const citations = ASSERTIONS.map(a => {
+    const rec = idx[norm(a.cite)];
+    let status;
+    if(!rec) status = "UNRESOLVED";
+    else status = norm(rec.holding).includes(norm(a.quote)) ? "ROOTED" : "MISQUOTE";
+    return {id:a.id, reporter_cite:a.cite, status};
+  });
+  const decision = citations.length && citations.every(c=>c.status==="ROOTED") ? "AUTO_APPROVE" : "ROUTE_TO_HUMAN";
+  return {decision, citations};
+}
+const HONEST = computeVerdict();              // re-derivation (ground truth)
+let claimed = JSON.parse(JSON.stringify(HONEST)); // producer's claim (mutable)
+
+// ---- Rendering ----
+function pill(s){return `<span class="pill ${s}">${s}</span>`;}
+function renderTables(){
+  document.querySelector("#corpus tbody").innerHTML = CORPUS.map(r=>
+    `<tr><td class="cite">${r.cite}</td><td>${r.name}</td><td class="small">${r.holding}</td></tr>`).join("");
+  document.querySelector("#assertions tbody").innerHTML = ASSERTIONS.map(a=>
+    `<tr><td class="cite">${a.id}</td><td class="cite">${a.cite}</td><td class="small">"${a.quote}"</td></tr>`).join("");
+}
+function render(){
+  const rows = HONEST.citations.map((c,i)=>{
+    const cl = claimed.citations[i].status;
+    const drift = cl !== c.status;
+    return `<tr><td class="cite">${c.id}</td><td class="cite">${c.reporter_cite}</td>
+      <td>${pill(c.status)}</td>
+      <td>${pill(cl)}${drift?' <span class="small t-unresolved">← altered</span>':''}</td></tr>`;
+  }).join("");
+  document.querySelector("#result tbody").innerHTML = rows;
+
+  const match = JSON.stringify(claimed) === JSON.stringify(HONEST);
+  const b = document.getElementById("banner");
+  b.style.display = "flex";
+  b.className = "verdict-banner " + (match?"pass":"fail");
+  if(match){
+    b.innerHTML = `<span class="dot"></span><span>PASS — claim re-derives. Gate decision <span class="decision ${HONEST.decision}">${HONEST.decision}</span> is faithful to the evidence.</span><span class="code">verify.py → exit 0</span>`;
+  }else{
+    b.innerHTML = `<span class="dot"></span><span>FAIL — claimed verdict does not re-derive. The gate caught the producer.</span><span class="code">REDERIVATION_MISMATCH</span>`;
+  }
+  const d = document.getElementById("diff");
+  if(match){ d.className="diff"; d.innerHTML=""; }
+  else{
+    d.className="diff show";
+    d.innerHTML =
+      `<span class="cl">claimed   decision = ${claimed.decision}</span>\n`+
+      `<span class="re">re-derived decision = ${HONEST.decision}</span>\n\n`+
+      `the auditor-anchored exact comparator compares the WHOLE verdict object —\n`+
+      `any single altered status is enough to fail closed.`;
+  }
+}
+function runHonest(){ reset(); }
+function tamperAuto(){
+  claimed.decision = "AUTO_APPROVE";
+  claimed.citations.forEach(c=>c.status="ROOTED");
+  render();
+}
+function tamperMisquote(){
+  claimed = JSON.parse(JSON.stringify(HONEST));
+  const c3 = claimed.citations.find(c=>c.id==="C-03"); if(c3) c3.status="ROOTED";
+  render(); // decision stays ROUTE_TO_HUMAN (C-04 still UNRESOLVED) — but object still mismatches
+}
+function reset(){ claimed = JSON.parse(JSON.stringify(HONEST)); render(); }
+
+renderTables();
+render();
+</script>
+</body>
+</html>

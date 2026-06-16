@@ -1,0 +1,14 @@
+{
+  "schema": "pilot.v1",
+  "pilot": "secops_alert_minimal",
+  "title": "secops_alert_minimal — V-Kernel Audit-Bundle Pilot: AI Security Alert Classification",
+  "domain": "security_operations",
+  "expected_verdict": "PASS",
+  "bundle_count": 0,
+  "has_top_level_manifest": false,
+  "has_build_script": true,
+  "schema_versions": [],
+  "typed_checks": [],
+  "attack_classes_covered": [],
+  "last_verified": null
+}

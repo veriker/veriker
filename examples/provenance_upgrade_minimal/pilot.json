@@ -1,0 +1,24 @@
+{
+  "schema": "pilot.v1",
+  "pilot": "provenance_upgrade_minimal",
+  "title": "provenance_upgrade_minimal — honest verifier-signed single-tier rigor upgrade (S1)",
+  "domain": "provenance_lattice",
+  "expected_verdict": "PASS",
+  "bundle_count": 1,
+  "has_top_level_manifest": false,
+  "has_build_script": true,
+  "schema_versions": ["vcp-v1.1-canary4"],
+  "typed_checks": [
+    "spec_sha_pin",
+    "file_integrity_many_small",
+    "dispatch_record_wellformed",
+    "stamp_lattice"
+  ],
+  "attack_classes_covered": [
+    "stamp_upgrade_forged",
+    "stamp_upgrade_fail_closed_no_key",
+    "stamp_upgrade_tier_jump",
+    "stamp_aggregate_roundup"
+  ],
+  "last_verified": "2026-05-30"
+}

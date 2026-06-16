@@ -1,0 +1,12 @@
+{
+  "spec_id": "secops_alert.v1",
+  "description": "Auditor binding spec for the SOC/SIEM alert-classification re-derivation (Axis-2 spec-pinned dispatch). The representative re-derived output is the final alert classification label string (payload/alert_classification.json final_label) for alert-001 (line 0 of inputs/alert_log.txt). Re-derivation replays each rule's regex from inputs/rule_set.json in list order over the raw log line, applies optional threshold-field checks, accumulates the matched rules' weights into an aggregate score, then maps the score to a label via the pinned thresholds: score>=7 TRUE_POSITIVE, score>=3 SUSPICIOUS, else FALSE_POSITIVE. The replay rule (regex order, threshold semantics, weight accumulation, label thresholds) lives in the verifier primitive (secops_alert_recompute); the comparator is pinned HERE by the auditor (exact), not producer-asserted. A producer who ships a weaker spec gets a SHA the anchor does not list, so dispatch fails closed.",
+  "types": {
+    "secops_alert_final_label": {
+      "primitive_id": "secops_alert_recompute",
+      "comparator": {
+        "kind": "exact"
+      }
+    }
+  }
+}

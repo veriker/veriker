@@ -1,0 +1,15 @@
+[2026-05-10 09:01:12] Alice: Hey Bob, can you send the report to my email? It's alice.morgan@databridge.io
+[2026-05-10 09:01:45] Bob: Sure, Alice! Also, the client Thomas Whitfield asked us to call him back at (415) 882-9043.
+[2026-05-10 09:02:11] Alice: Got it. His billing address is 742 Evergreen Terrace, Springfield, IL 62704.
+[2026-05-10 09:02:33] Bob: Right. His SSN for the KYC form is 534-87-2019, please keep that safe.
+[2026-05-10 09:03:01] Alice: Of course. The alternate contact is Clara Nguyen — her cell is +1-650-334-7821.
+[2026-05-10 09:03:29] Bob: Also note, Clara's personal email is c.nguyen92@mailhub.net.
+[2026-05-10 09:04:05] Alice: The invoice was sent to the AP team. Contact is Derek Salazar at derek.salazar@corp-finance.com.
+[2026-05-10 09:04:40] Bob: Perfect. Our internal ref is TXN-20260510-8847 — not PII but noted.
+[2026-05-10 09:05:15] Alice: Agreed. Thomas's home address is 91 Lakeview Drive, Austin, TX 78701.
+[2026-05-10 09:05:48] Bob: His passport number is X84921073 and expiry 2029-08-14.
+[2026-05-10 09:06:22] Alice: Make sure the compliance doc has SSN 534-87-2019 redacted before sending.
+[2026-05-10 09:06:55] Bob: Will do. The accountant Priya Kapoor's work email is p.kapoor@auditfirm.org.
+[2026-05-10 09:07:30] Alice: She can also be reached at (312) 774-5566 during business hours.
+[2026-05-10 09:08:01] Bob: Thanks. One more — client ref IP address 192.168.45.200 appeared in the logs.
+[2026-05-10 09:08:35] Alice: Good catch. Flag it. My direct line is (212) 993-0010 if anything urgent comes up.

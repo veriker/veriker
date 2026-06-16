@@ -1,0 +1,12 @@
+{
+  "spec_id": "tabular.v1",
+  "description": "Auditor binding spec for the tabular_minimal re-derivation (Axis-2 spec-pinned dispatch). The representative re-derived output is the SHA-256 hex digest of the recomputed result CSV bytes, i.e. result_sha = hashlib.sha256(result_csv_bytes).hexdigest(), where result_csv_bytes is produced by re-executing the committed GROUP BY + SUM/COUNT query (spec/query.json, tabular-query-v1 DSL) over data/sales.csv and serializing the aggregated rows with byte-identical column order and LF-only, no-trailing-newline formatting as the producer's pack. The recompute rule lives in the verifier primitive (tabular_recompute); the comparator is pinned HERE by the auditor as exact (byte-exact string equality of the hex digest), not producer-asserted. A producer who ships a weaker spec gets a SHA the anchor does not list, so dispatch fails closed. SCOPE: this re-derives THAT the published result.csv is the deterministic output of the committed query over the committed input; it is NOT a check that the query or the input data are themselves correct.",
+  "types": {
+    "result_sha": {
+      "primitive_id": "tabular_recompute",
+      "comparator": {
+        "kind": "exact"
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "model_id": "credit-default-clf-v3",
+  "model_card_ref": "vnv/credit-default-clf-v3/validation-2026Q2",
+  "metric": "roc_auc",
+  "metric_method": "tie_averaged_mann_whitney_rank_auc",
+  "test_set_id": "holdout-2026Q2-synthetic",
+  "note": "SYNTHETIC frozen V&V holdout. Each record is one scored test item: label is the ground-truth class (1=default), score is the model's predicted probability. AUC needs no decision threshold. This fixture demonstrates re-derivability of a reported A.6 V&V metric; it asserts nothing about whether the labels are correct or the model is fit for purpose.",
+  "evaluations": [
+    {"item_id": "t01", "label": 1, "score": 0.91},
+    {"item_id": "t02", "label": 1, "score": 0.88},
+    {"item_id": "t03", "label": 1, "score": 0.84},
+    {"item_id": "t04", "label": 1, "score": 0.79},
+    {"item_id": "t05", "label": 1, "score": 0.72},
+    {"item_id": "t06", "label": 1, "score": 0.66},
+    {"item_id": "t07", "label": 1, "score": 0.58},
+    {"item_id": "t08", "label": 1, "score": 0.49},
+    {"item_id": "t09", "label": 0, "score": 0.61},
+    {"item_id": "t10", "label": 0, "score": 0.54},
+    {"item_id": "t11", "label": 0, "score": 0.47},
+    {"item_id": "t12", "label": 0, "score": 0.41},
+    {"item_id": "t13", "label": 0, "score": 0.35},
+    {"item_id": "t14", "label": 0, "score": 0.28},
+    {"item_id": "t15", "label": 0, "score": 0.19},
+    {"item_id": "t16", "label": 0, "score": 0.12}
+  ]
+}

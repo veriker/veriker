@@ -1,0 +1,10 @@
+{
+  "spec_id": "iso42001.eventlog.v1",
+  "description": "Auditor binding spec for ISO/IEC 42001 A.6 'AI-System Recording of Event Logs' integrity re-derivation. Binds output type 'log_chain_head_digest' to the verifier-side primitive 'iso42001_log_chain_head_recompute' (SHA-256 hash-chain fold over the ordered events, genesis pinned in the primitive) under the 'exact' comparator (hex-string equality). The chaining rule is AUTHORITY-PINNED via the primitive_id; a producer cannot substitute a weaker digest rule without changing the primitive_id, which the auditor's SHA-pinned spec rejects. Re-derivability + internal tamper-evidence only — NOT a completeness guarantee (no event withheld before commitment) and NOT A.6 control conformance.",
+  "types": {
+    "log_chain_head_digest": {
+      "primitive_id": "iso42001_log_chain_head_recompute",
+      "comparator": {"kind": "exact", "params": {}}
+    }
+  }
+}

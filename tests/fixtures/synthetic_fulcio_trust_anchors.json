@@ -1,0 +1,18 @@
+{
+  "_comment": "SYNTHETIC Fulcio trust anchors (root + intermediate CA + CT-log key) for the native-Fulcio leg test. Regenerate with tests/fixtures/_generate_synthetic_fulcio.py.",
+  "fulcio_roots_pem": [
+    "-----BEGIN CERTIFICATE-----\nMIIBUjCB+KADAgECAgEBMAoGCCqGSM49BAMCMCgxJjAkBgNVBAMMHXZlcmlrZXIg\nc3ludGhldGljIGZ1bGNpbyByb290MB4XDTIwMDEwMTAwMDAwMFoXDTM1MDEwMTAw\nMDAwMFowKDEmMCQGA1UEAwwddmVyaWtlciBzeW50aGV0aWMgZnVsY2lvIHJvb3Qw\nWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAR8OjFFlELGJEi4Iufo3uP+++A1Ch20\nWyi85rYYF4D9li0Eb1Dr7/YkyqtGhjtwXE6FAKgKM7X5Cx7HpM6UmWUqoxMwETAP\nBgNVHRMBAf8EBTADAQH/MAoGCCqGSM49BAMCA0kAMEYCIQDKMB2hNb7he5E/4GbK\nSbbc16R9gpzlH252Su0sybEiOAIhAP7iYN/iMAoSIsCUUw2zQLu/QZG9sCDGRsYx\n6Db5qIEf\n-----END CERTIFICATE-----\n"
+  ],
+  "fulcio_intermediates_pem": [
+    "-----BEGIN CERTIFICATE-----\nMIIBWzCCAQCgAwIBAgIBAjAKBggqhkjOPQQDAjAoMSYwJAYDVQQDDB12ZXJpa2Vy\nIHN5bnRoZXRpYyBmdWxjaW8gcm9vdDAeFw0yMDAxMDEwMDAwMDBaFw0zNTAxMDEw\nMDAwMDBaMDAxLjAsBgNVBAMMJXZlcmlrZXIgc3ludGhldGljIGZ1bGNpbyBpbnRl\ncm1lZGlhdGUwWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAATlxu97TfnWFd7J3mgI\nllT4euGNuiVYvMlWXP58KirawvFoJ0eWsftfqv5I6rZMzXJlKSmxjoHt2MrmE8Xq\nAcxEoxMwETAPBgNVHRMBAf8EBTADAQH/MAoGCCqGSM49BAMCA0kAMEYCIQC/xVZI\n0OLdbzlTgeI77TT/5EX0URwiFVv5YIb/138ndQIhANK4D2NA8nH+VMN+qq2JsWFT\nH2MkK4DfP897YrfpZ3it\n-----END CERTIFICATE-----\n"
+  ],
+  "ctlogs": [
+    {
+      "log_id_hex": "838eec845c7317797a9d19507a75f940104cbb6c413c09ccea167e342399e1b0",
+      "key_details": "PKIX_ECDSA_P256_SHA_256",
+      "key_pem": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEn/Qq8K+dyQwqn27LL1PfHLGXQ40S\nnlWnvLZGBQ80+Ao55EiveRqRYGrO2ur4whrwUgoUX5ofDO75C+/5Y9bCnA==\n-----END PUBLIC KEY-----\n",
+      "valid_start": "2020-01-01T00:00:00Z",
+      "valid_end": "2035-01-01T00:00:00Z"
+    }
+  ]
+}

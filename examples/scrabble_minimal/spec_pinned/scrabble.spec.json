@@ -1,0 +1,12 @@
+{
+  "spec_id": "scrabble.v1",
+  "description": "Auditor binding spec for the scrabble_minimal dictionary-adjudication re-derivation (Axis-2 spec-pinned dispatch). The representative re-derived output is the ruling object {edition_cited, word, is_legal} from payload/ruling.json. It is recomputed by resolving (jurisdiction, timestamp) -> effective edition via the committed timeline (editions/jurisdiction_timeline.json), then testing word membership in the resolved edition's wordlist (dictionaries/<edition>.txt). The resolution + membership rule lives in the verifier primitive (scrabble_recompute); the comparator is pinned HERE by the auditor (exact, no params -- the {edition_cited, word, is_legal} object compared element-wise), not producer-asserted. A producer who ships a spec the auditor did not anchor (different SHA / different primitive_id) gets a SHA the anchor does not list, so dispatch fails closed.",
+  "types": {
+    "scrabble_ruling": {
+      "primitive_id": "scrabble_recompute",
+      "comparator": {
+        "kind": "exact"
+      }
+    }
+  }
+}

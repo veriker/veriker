@@ -1,0 +1,12 @@
+{
+  "spec_id": "chat_log_redaction.v1",
+  "description": "Auditor binding spec for the chat-log PII-redaction re-derivation (Axis-2 spec-pinned dispatch). The representative re-derived output is redacted_output_sha = sha256(redacted_transcript) hex digest, where the redacted transcript is produced by re-running the bundled deterministic regex + entity-dictionary PII scan over inputs/transcript.txt under inputs/redaction_policy.json (identical span ordering and greedy-cover overlap resolution, [REDACTED:<kind>] substitution applied right-to-left). The redaction rule lives in the verifier primitive (chat_log_redaction_recompute); the comparator is pinned HERE by the auditor as exact (byte-exact hex-string equality), not producer-asserted. A producer who ships a weaker spec gets a SHA the anchor does not list, so dispatch fails closed. SCOPE: this re-derives WHAT the deterministic redaction policy produces over the committed transcript; it is NOT a claim that the policy catches all PII.",
+  "types": {
+    "redacted_output_sha": {
+      "primitive_id": "chat_log_redaction_recompute",
+      "comparator": {
+        "kind": "exact"
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "spec_id": "dp.v1",
+  "description": "Auditor binding spec for the differential-privacy (Laplace seeded-noise aggregate) noised-count re-derivation (Axis-2 spec-pinned dispatch). The representative re-derived output is the scalar noised_count from payload/dp_release.json, computed as true_count + laplace_noise(scale = sensitivity / epsilon, seed), where true_count is re-counted from data/dataset.jsonl under the committed predicate and the Laplace variate is re-drawn deterministically from random.Random(seed) by inverse-CDF: noise = -scale * sign(u - 0.5) * log(1 - 2*|u - 0.5|), u = Random(seed).random(). The mechanism parameters (name=laplace, epsilon, sensitivity, seed) are read from the COMMITTED bundle (payload/dp_release.json), so the noise is reproducible. The aggregation/noise rule lives in the verifier primitive (dp_recompute); the comparator and tolerance are pinned HERE by the auditor (scalar_epsilon, epsilon=1e-6), not producer-asserted. NB this comparator epsilon (a verification tolerance) is a different knob from the DP mechanism's privacy-budget epsilon in dp_release.json. The tolerance is a deliberately loose margin for math.log cross-platform non-reproducibility: at magnitude ~6.4 one double ULP is ~1e-15, so 1e-6 sits far above the math.log wobble it absorbs yet far below the smallest meaningful count-drift unit (an integer 1); true_count is exactly an integer so any count drift >= 1 >> 1e-6 is never masked. A producer who ships a weaker spec gets a SHA the anchor does not list, so dispatch fails closed. The comparator carries the optional auditor annotation numeric_model=binary64_libm_tolerated, recording that this tolerance is an INTENTIONAL margin for cross-platform libm (math.log) non-determinism, not an accidental float coercion — a documentary marker (does not change pass/fail) validated against the verifier's closed-world allowlist.",
+  "types": {
+    "dp_noised_count": {
+      "primitive_id": "dp_recompute",
+      "comparator": {
+        "kind": "scalar_epsilon",
+        "params": {
+          "epsilon": 1e-6,
+          "numeric_model": "binary64_libm_tolerated"
+        }
+      }
+    }
+  }
+}

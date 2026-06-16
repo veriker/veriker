@@ -1,0 +1,19 @@
+{
+  "_comment": "Producer-side input to the rooter: the reporter-cited authorities of patent_redhat_kb shard 01 (§101 patent eligibility). Each entry is what an AI legal assistant (or the KB itself) ASSERTS exists. The rooter resolves each against CourtListener to build a verbatim-rooted corpus; authorities that do not resolve route to the human-root queue (NOT auto-reject). reporter_cite is the primary cite; parallel_cites are alternate reporters tried in the same lookup (the Alice U.S.<->S.Ct. coverage-gap fix). Source: the internal design notes (patent-redteam branch).",
+  "shard": "01_section101_eligibility",
+  "authorities": [
+    {"id": "alice",        "reporter_cite": "573 U.S. 208",  "parallel_cites": ["134 S. Ct. 2347"], "case_name": "Alice Corp. v. CLS Bank International",            "year": 2014},
+    {"id": "mayo",         "reporter_cite": "566 U.S. 66",   "parallel_cites": ["132 S. Ct. 1289"], "case_name": "Mayo Collaborative Services v. Prometheus Laboratories", "year": 2012},
+    {"id": "bilski",       "reporter_cite": "561 U.S. 593",  "parallel_cites": ["130 S. Ct. 3218"], "case_name": "Bilski v. Kappos",                                 "year": 2010},
+    {"id": "epg",          "reporter_cite": "830 F.3d 1350", "parallel_cites": [],                  "case_name": "Electric Power Group, LLC v. Alstom S.A.",         "year": 2016},
+    {"id": "enfish",       "reporter_cite": "822 F.3d 1327", "parallel_cites": [],                  "case_name": "Enfish, LLC v. Microsoft Corp.",                   "year": 2016},
+    {"id": "ddr",          "reporter_cite": "773 F.3d 1245", "parallel_cites": [],                  "case_name": "DDR Holdings, LLC v. Hotels.com, L.P.",            "year": 2014},
+    {"id": "mcro",         "reporter_cite": "837 F.3d 1299", "parallel_cites": [],                  "case_name": "McRO, Inc. v. Bandai Namco Games America Inc.",    "year": 2016},
+    {"id": "berkheimer",   "reporter_cite": "881 F.3d 1360", "parallel_cites": [],                  "case_name": "Berkheimer v. HP Inc.",                            "year": 2018},
+    {"id": "sap",          "reporter_cite": "898 F.3d 1161", "parallel_cites": [],                  "case_name": "SAP America, Inc. v. InvestPic, LLC",              "year": 2018},
+    {"id": "twoway",       "reporter_cite": "874 F.3d 1329", "parallel_cites": [],                  "case_name": "Two-Way Media Ltd. v. Comcast Cable Communications, LLC", "year": 2017},
+    {"id": "ancora",       "reporter_cite": "908 F.3d 1343", "parallel_cites": [],                  "case_name": "Ancora Technologies, Inc. v. HTC America, Inc.",   "year": 2018},
+    {"id": "tecsec",       "reporter_cite": "978 F.3d 1278", "parallel_cites": [],                  "case_name": "TecSec, Inc. v. Adobe Inc.",                       "year": 2020},
+    {"id": "recentive",    "reporter_cite": "134 F.4th 1205","parallel_cites": [],                  "case_name": "Recentive Analytics, Inc. v. Fox Corp.",           "year": 2025}
+  ]
+}

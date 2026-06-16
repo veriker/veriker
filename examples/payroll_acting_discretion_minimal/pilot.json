@@ -1,0 +1,24 @@
+{
+  "schema": "pilot.v1",
+  "pilot": "payroll_acting_discretion_minimal",
+  "title": "payroll_acting_discretion_minimal — discretionary acting-pay band membership (S2, the case re-derivation cannot reach)",
+  "domain": "government_payroll_acting_discretion",
+  "expected_verdict": "PASS",
+  "bundle_count": 1,
+  "has_top_level_manifest": true,
+  "has_build_script": true,
+  "schema_versions": ["vcp-v1.1-canary4"],
+  "typed_checks": [
+    "spec_sha_pin",
+    "file_integrity_many_small",
+    "dispatch_record_wellformed",
+    "refinement_discharge"
+  ],
+  "attack_classes_covered": [
+    "discharge_status_forged_no_key",
+    "proof_obligation_sha_mismatch",
+    "acting_rate_windfall_over_payment_divergence",
+    "acting_rate_below_floor_under_payment_divergence"
+  ],
+  "last_verified": "2026-05-31"
+}

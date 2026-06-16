@@ -1,0 +1,12 @@
+{
+  "spec_id": "raster.v1",
+  "description": "Auditor binding spec for the raster_minimal geospatial zonal re-derivation (Axis-2 spec-pinned dispatch). The representative re-derived output is the in_polygon_cell_count integer from payload/zonal_result.json. It is recomputed by ray-casting point-in-polygon over the committed int8 raster grid (raster/grid.bin, 32x32 little-endian signed) and the polygon vertices in spec/zonal_query.json: each cell center (c+0.5, r+0.5) is tested against the polygon via a standard horizontal-ray crossing count, and the in-polygon cells are counted. The ray-casting + counting rule lives in the verifier primitive (raster_recompute); the comparator is pinned HERE by the auditor (exact, no params - a deterministic integer compared for equality), not producer-asserted. A producer who ships a spec the auditor did not anchor (different SHA / different primitive_id) gets a SHA the anchor does not list, so dispatch fails closed.",
+  "types": {
+    "raster_in_polygon_cell_count": {
+      "primitive_id": "raster_recompute",
+      "comparator": {
+        "kind": "exact"
+      }
+    }
+  }
+}

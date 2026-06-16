@@ -1,0 +1,38 @@
+[
+  {
+    "id": "A-01",
+    "reporter_cite": "830 F.3d 1350",
+    "case_name": "Electric Power Group, LLC v. Alstom S.A.",
+    "quoted_holding": "collecting information, analyzing it, and displaying certain results of the collection and analysis"
+  },
+  {
+    "id": "A-02",
+    "reporter_cite": "874 F.3d 1329",
+    "case_name": "Two-Way Media Ltd. v. Comcast Cable Communications, LLC",
+    "quoted_holding": "Claims directed to generalized steps to be performed on a computer using conventional computer activity are not patent eligible"
+  },
+  {
+    "id": "A-03",
+    "reporter_cite": "134 F.4th 1205",
+    "case_name": "Recentive Analytics, Inc. v. Fox Corp.",
+    "quoted_holding": "applying established machine learning methods to a new data environment is patent eligible under section 101"
+  },
+  {
+    "id": "A-04",
+    "reporter_cite": "142 F.4th 880",
+    "case_name": "Synapse AI, Inc. v. Cortex Labs, Inc.",
+    "quoted_holding": "training a neural network on proprietary data is presumptively patent eligible"
+  },
+  {
+    "id": "A-05",
+    "reporter_cite": "573 U.S. 208",
+    "case_name": "Alice Corp. v. CLS Bank International",
+    "quoted_holding": "mere recitation of a generic computer cannot transform a patent-ineligible abstract idea into a patent-eligible invention"
+  },
+  {
+    "id": "A-06",
+    "reporter_cite": "130 S. Ct. 3218",
+    "case_name": "Bilski v. Kappos",
+    "quoted_holding": "The concept of hedging, described in claim 1 and reduced to a mathematical formula in claim 4, is an unpatentable abstract idea, just like the algorithms at issue in Benson and Flook."
+  }
+]
