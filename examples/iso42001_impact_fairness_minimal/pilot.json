@@ -1,0 +1,37 @@
+{
+  "schema": "pilot.v1",
+  "pilot": "iso42001_impact_fairness_minimal",
+  "title": "iso42001_impact_fairness_minimal — ISO/IEC 42001 A.5 Disparate-Impact Re-Derivation (Axis-2)",
+  "domain": "ai_governance_iso42001",
+  "expected_verdict": "PASS",
+  "bundle_count": 1,
+  "has_top_level_manifest": true,
+  "has_build_script": true,
+  "schema_versions": [
+    "vcp-v1.1-canary4"
+  ],
+  "typed_checks": [
+    "file_integrity_many_small"
+  ],
+  "attack_classes_covered": [
+    "spec_pinned:tampered_value",
+    "spec_pinned:input_tamper",
+    "spec_pinned:weaker_spec_substitution",
+    "spec_pinned:no_anchor"
+  ],
+  "spec_pinned_dispatch": {
+    "output_id": "disparate_impact_ratio",
+    "type": "disparate_impact_ratio",
+    "conforms_to": "spec/iso42001_fairness.spec.json",
+    "comparator_kind": "scalar_epsilon",
+    "epsilon": 1e-9,
+    "binding_spec": "spec_pinned/iso42001_fairness.spec.json"
+  },
+  "primitive_id": "iso42001_disparate_impact_recompute",
+  "honest_disparate_impact_ratio": 0.5,
+  "fixture_assessment_id": "lending-model-impact-2026Q2-synthetic",
+  "fixture_subjects": 24,
+  "fixture_groups": 3,
+  "claim_boundary": "Proves the disclosed A.5 disparate-impact ratio (EEOC four-fifths min/max group rate) is re-derivable from the declared per-subject outcomes and tamper-evident under the auditor's pinned rule. NOT a judgement that the groups/outcomes are correctly recorded, that this is the right fairness measure, or ISO/IEC 42001 control conformance. Synthetic data; no customer.",
+  "last_verified": null
+}

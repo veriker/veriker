@@ -1,0 +1,25 @@
+{
+  "schema": "pilot.v1",
+  "pilot": "content_provenance_minimal",
+  "title": "content_provenance_minimal — Content Provenance Audit Bundle Pilot",
+  "domain": "content-provenance",
+  "expected_verdict": "PASS",
+  "bundle_count": 0,
+  "has_top_level_manifest": false,
+  "has_build_script": true,
+  "schema_versions": [
+    "vcp-v1.1-canary4"
+  ],
+  "typed_checks": [
+    "file_integrity_many_small",
+    "content_provenance_re_derivation"
+  ],
+  "attack_classes_covered": [
+    "post_signing_content_alteration",
+    "provenance_chain_tampering",
+    "producer_hmac_mismatch"
+  ],
+  "scope_boundary": "Proves content bytes are unaltered since producer signing. NOT truth-detection. A factually false but unaltered, correctly-signed artifact PASSES — by design and out of scope.",
+  "signing_primitive": "HMAC-SHA256 (stdlib hmac + hashlib); synthetic key; local-only demo",
+  "last_verified": "2026-05-29"
+}

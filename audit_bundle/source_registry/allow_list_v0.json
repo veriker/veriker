@@ -1,0 +1,18 @@
+{
+  "_comment": "CANARY-SCOPE allow-list — NOT an authoritative production registry. Three reference issuers for span-provenance + device-mesh integration tests only. public_key_pem is null at v1; real keys land in v1.1.",
+  "sec.gov": {
+    "identity_method": "curated_allow_list",
+    "public_key_pem": null,
+    "notes": "U.S. Securities and Exchange Commission — regulatory filings (EDGAR). Canonical issuer for financial-document ingestion paths."
+  },
+  "mfds.go.kr": {
+    "identity_method": "curated_allow_list",
+    "public_key_pem": null,
+    "notes": "Korea Ministry of Food and Drug Safety — regulatory approvals and device certifications. Canonical issuer for the device-mesh regulatory source."
+  },
+  "fda.gov": {
+    "identity_method": "curated_allow_list",
+    "public_key_pem": null,
+    "notes": "U.S. Food and Drug Administration — regulatory guidance and approvals. Canonical issuer for biomedical ingestion paths."
+  }
+}

@@ -1,0 +1,58 @@
+# Wiki-lock waivers for test_wiki_lock_to_code.py + lint.py check_wiki_locks().
+#
+# Each entry waives one symbol that an ADR has marked
+# `Field name lock: \`X\`` (or equivalent) but is intentionally not yet
+# present in audit_bundle/ — because the substrate landing is deferred and
+# tracked elsewhere, OR because the symbol lives in a non-Python interface
+# (L11 schema column, O envelope JSON, etc.) that this checker does not
+# yet scan.
+#
+# Format (one per line):
+#   SYMBOL  # reason: <one-line justification, including tracking link>
+#
+# Empty file is the goal state. Each waiver is a TODO with a name.
+
+# ---------------------------------------------------------------------------
+# Pre-existing doc-only locks surfaced by audit 2026-05-26.
+# Tracked in memory: the internal design notes.
+# Each is a substrate-stub-missing case the audit flagged; resolution path is
+# (a) land a paired stub (TypedDict, Protocol, frozenset, enum entry) OR
+# (b) revoke the lock in the ADR if the reservation is no longer load-bearing.
+# Until then, each line below acknowledges the deferral so the gate doesn't
+# block unrelated commits.
+# ---------------------------------------------------------------------------
+
+admission_attestation_capture       # reason: A-ADR doc-only per audit 2026-05-26; A-ADR still pre-tribunal; track via the internal design notes
+admission_attestations_referenced   # reason: A-ADR doc-only per audit 2026-05-26; A-ADR still pre-tribunal; track via the internal design notes
+serving_environment_constraint      # reason: JR-ADR doc-only per audit 2026-05-26; cross-pillar O routing-predicate envelope field; track via the internal design notes
+KeyRegistry                         # reason: E-ADR doc-only per audit 2026-05-26; E-ADR still pre-tribunal (HIGHEST tribunal risk of the three 2026-05-20 ADRs); track via the internal design notes
+redaction_policy_ref                # reason: Redaction-ADR doc-only per audit 2026-05-26; awaits first concrete consumer pull (openclaw-imy-demo Tier-4 or AI Act Annex IV sprint); track via the internal design notes
+data_sensitivity_tags               # reason: Redaction-ADR doc-only per audit 2026-05-26; L1 source-event schema field; awaits L2 governance program output; track via the internal design notes
+redact_on_egress                    # reason: Redaction-ADR doc-only per audit 2026-05-26; composition step-level field; track via the internal design notes
+ontology                            # reason: Redaction-ADR doc-only per audit 2026-05-26; sub-decision 3 (sensitivity-tag taxonomy) left open until L2 program; track via the internal design notes
+variant_used                        # reason: C-ADR doc-only per audit 2026-05-26; C-ADR still pre-tribunal; paired with C20 sprint Q3 2026; track via the internal design notes
+stamp_attestation                   # reason: C-ADR doc-only per audit 2026-05-26; new §C9.3 block; C-ADR still pre-tribunal; track via the internal design notes
+stamp_attestation_capture           # reason: C-ADR doc-only per audit 2026-05-26; O routing-predicate envelope slot; C-ADR still pre-tribunal; track via the internal design notes
+stamp_attestations_referenced       # reason: C-ADR doc-only per audit 2026-05-26; L accountability cross-reference slot; C-ADR still pre-tribunal; track via the internal design notes
+
+# ---------------------------------------------------------------------------
+# Wiki page -> code waivers (Tier 2, direction wiki->code). Added 2026-06-09.
+# Format: `wiki:<relpath-under-the internal design notes>  # reason: ...`
+# A contracts/C*.md page must EITHER declare a `Governs:` line listing its
+# audit_bundle/ modules, OR be waived here. These C-sections have governing
+# substrate but not yet a clean file-granularity 1:1 map (grep finds them
+# spread across verifier.py / o5/ / coverage/ / plugins/ + scoping docs);
+# backfill a `Governs:` line when a single owning module is identified.
+# decisions/ pages are opt-in (checked only when they declare `Governs:`).
+# ---------------------------------------------------------------------------
+wiki:v_kernel/contracts/C2_append_only_triggers.md         # reason: append-only enforcement spread across verifier.py + discharge/verifier_signing.py; no single owning module yet
+wiki:v_kernel/contracts/C3_trigger_live_verifiability.md   # reason: trigger live-verifiability spans bundle_manifest.py + source_registry; backfill when a dedicated module owns it
+wiki:v_kernel/contracts/C4_closed_world_coverage.md        # reason: closed-world coverage = coverage/sum_invariant_plugin.py + manifest checks; map at file granularity in a later pass
+wiki:v_kernel/contracts/C5_stdlib_only_verifier.md         # reason: governed by veriker/cli/verify.py (OUTSIDE audit_bundle/); Governs convention lists audit_bundle/ paths only
+wiki:v_kernel/contracts/C6_rederivation_pack.md            # reason: re-derivation owned by rederivation/ + o5/canonical.py + plugin.py; multi-module, backfill when consolidated
+wiki:v_kernel/contracts/C7_status_change_events.md         # reason: status-change events span event_stream.py + o5/canonical.py; no single owning module yet
+wiki:v_kernel/contracts/C8_locked_sha_spec_docs.md         # reason: locked-SHA spec docs span git_blob_resolver.py + snapshots/snapshot_store.py; map later
+wiki:v_kernel/contracts/C9_bundle_integrity_many_checks.md # reason: integrity = many-checks aggregate across verifier.py + plugins/; intentionally not one module
+wiki:v_kernel/contracts/C11_adversarial_test_monotone_growth.md # reason: owned by o5/verify.py + o5/__init__.py; backfill when a dedicated C11 module is named
+wiki:v_kernel/contracts/C12_self_falsification_negative_test.md # reason: governed by plugins/falsification_negative_test.py; backfill a Governs line in a follow-up
+wiki:v_kernel/contracts/C13_drift_reduction_checkpoints.md # reason: drift-reduction checkpoints documented in c19 scoping locks; no audit_bundle/ runtime module yet

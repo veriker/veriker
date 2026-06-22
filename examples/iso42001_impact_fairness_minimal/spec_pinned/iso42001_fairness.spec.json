@@ -1,0 +1,10 @@
+{
+  "spec_id": "iso42001.impact.fairness.v1",
+  "description": "Auditor binding spec for ISO/IEC 42001 A.5 (Assessing Impacts of AI Systems) disparate-impact metric re-derivation. Binds output type 'disparate_impact_ratio' to the verifier-side primitive 'iso42001_disparate_impact_recompute' (EEOC four-fifths min-rate/max-rate) under scalar_epsilon (epsilon=1e-9). The metric method and tolerance are AUTHORITY-PINNED here, not producer-asserted: a producer cannot swap a more flattering fairness definition or widen the tolerance without changing this spec's SHA, which the auditor's anchor rejects. Re-derivability of the disclosed figure only — NOT a judgement that the metric is the right fairness measure, and NOT A.5 control conformance.",
+  "types": {
+    "disparate_impact_ratio": {
+      "primitive_id": "iso42001_disparate_impact_recompute",
+      "comparator": {"kind": "scalar_epsilon", "params": {"epsilon": 1e-9}}
+    }
+  }
+}

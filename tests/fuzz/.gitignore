@@ -1,0 +1,15 @@
+# Transient atheris/libfuzzer artifacts — keep human-curated seeds + crash
+# artifacts under version control, drop the rest.
+
+# Per-run summary logs written by the harnesses (`> last_*.log`).
+last_run.log
+last_cose_sig_run.log
+last_cose_bundle_run.log
+
+# Coverage-extending entries libfuzzer adds during a run, named by SHA-1 of
+# their contents (40-char hex). The named `seed_*` files in each corpus
+# subdir are the curated baseline and ARE committed; everything else is
+# regeneratable noise.
+corpus/manifest/[0-9a-f][0-9a-f]*
+corpus/cose/[0-9a-f][0-9a-f]*
+corpus/cose_bundle/[0-9a-f][0-9a-f]*

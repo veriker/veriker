@@ -1,0 +1,115 @@
+{
+  "bundle_id": "dc-emissions-mrv-minimal-rc",
+  "created_at": "2026-05-20T00:00:00Z",
+  "cross_refs": {},
+  "files": {
+    "DCEmissionsMRVReDerivationCheck.py": "1f957ea2409401d76e9dc42eaa07ce5e05cb96afc5a98fe15b040be53e0053b3",
+    "README.md": "e87de3cbafd36217bb6ca6e5ec8e31a7c92470af86e8ffa2fc20a3cd9c33f7ac",
+    "_build_bundle.py": "afdf1f146fa7b7f88476290aa548dbb1cc50579cdfb170890acdf828de010681",
+    "dc_emissions_mrv_recompute.py": "42b95377ed19754d2cd2673150875cd84c58c592d9ea83be3f74cb670d32e537",
+    "inputs/embodied_carbon_inventory.json": "37f9bac7caa3d065b5c207177112808765b01201b0e479bd52ceece2b5b1156b",
+    "inputs/emission_sources.json": "d660ed064c8cbb4f44e7f96f3e58182952aa99cce448f1ed6ae6cf9d57be3ddd",
+    "inputs/permit_thresholds.json": "1945f106ea2ff5821627240649623d2108d4efbbc56a0f64f954c6f2909d8749",
+    "payload/nsr_submission.json": "2f0c84a9b61b7428b1bb4febe834fba52af5ac8ddda751ba628d16f73f76048a",
+    "pilot.json": "141526e9494dc2f16a3a159fa69dafcbb9e2b96cc06a5df2ef1640af474d3134",
+    "re_derive/dc_emissions_mrv_pack.py": "dd9cc62cc3aa2a8c5f5182fced6740d58867f1f3dda2da56900a8489907903ad",
+    "spec_pinned/dc_emissions_mrv.spec.json": "7f5d07baddce9090e5ed81c2eb4b238c19ebce4e349749a3b78ee014c71fc151",
+    "spec_pinned_check.py": "36aa51acb70b0ef8f0cc45410001ecc0b4d8bfa7ab97eb26615f72bac07529bb",
+    "verify.py": "fe0cae06b7fe3d88de13b00eb40d6d250764eeb1ae2d402b0c07acf04eff0913"
+  },
+  "fragment_anchors": {
+    "mat-ALUM-RACK-001": {
+      "kind": "opaque",
+      "kind_tag": "embodied_carbon_material_anchor",
+      "locator": {
+        "citation_authority": "Bath Inventory of Carbon and Energy (ICE) v3 — Hammond & Jones, University of Bath / Circular Ecology",
+        "citation_url": "https://circularecology.com/embodied-carbon-footprint-database.html",
+        "epd_source": "synthetic-EPD-bath-ice-v3-aligned/aluminium-extrusion-primary",
+        "material_id": "ALUM-RACK-001",
+        "unit": "tonne"
+      },
+      "source_cid": "sha256:37f9bac7caa3d065b5c207177112808765b01201b0e479bd52ceece2b5b1156b"
+    },
+    "mat-CONC-FLR-001": {
+      "kind": "opaque",
+      "kind_tag": "embodied_carbon_material_anchor",
+      "locator": {
+        "citation_authority": "Building Transparency / EC3 (Embodied Carbon in Construction Calculator)",
+        "citation_url": "https://buildingtransparency.org/ec3",
+        "epd_source": "synthetic-EPD-ec3-aligned/concrete-4000psi-ready-mix",
+        "material_id": "CONC-FLR-001",
+        "unit": "cubic_yard"
+      },
+      "source_cid": "sha256:37f9bac7caa3d065b5c207177112808765b01201b0e479bd52ceece2b5b1156b"
+    },
+    "mat-GLAS-FAC-001": {
+      "kind": "opaque",
+      "kind_tag": "embodied_carbon_material_anchor",
+      "locator": {
+        "citation_authority": "Bath ICE v3 / industry-average Type III EPD for insulated glazing units",
+        "citation_url": "https://circularecology.com/embodied-carbon-footprint-database.html",
+        "epd_source": "synthetic-EPD-ice-v3-aligned/insulated-glazing-unit",
+        "material_id": "GLAS-FAC-001",
+        "unit": "tonne"
+      },
+      "source_cid": "sha256:37f9bac7caa3d065b5c207177112808765b01201b0e479bd52ceece2b5b1156b"
+    },
+    "mat-STL-REB-001": {
+      "kind": "opaque",
+      "kind_tag": "embodied_carbon_material_anchor",
+      "locator": {
+        "citation_authority": "Concrete Reinforcing Steel Institute (CRSI) Industry-Average EPD for fabricated reinforcing steel",
+        "citation_url": "https://www.crsi.org/sustainability/",
+        "epd_source": "synthetic-EPD-crsi-v2-aligned/steel-rebar-eaf-us",
+        "material_id": "STL-REB-001",
+        "unit": "tonne"
+      },
+      "source_cid": "sha256:37f9bac7caa3d065b5c207177112808765b01201b0e479bd52ceece2b5b1156b"
+    },
+    "mat-STL-STR-001": {
+      "kind": "opaque",
+      "kind_tag": "embodied_carbon_material_anchor",
+      "locator": {
+        "citation_authority": "American Institute of Steel Construction (AISC) Industry-Average EPD for fabricated structural sections",
+        "citation_url": "https://www.aisc.org/why-steel/sustainability/",
+        "epd_source": "synthetic-EPD-aisc-v2-aligned/steel-structural-wide-flange-eaf",
+        "material_id": "STL-STR-001",
+        "unit": "tonne"
+      },
+      "source_cid": "sha256:37f9bac7caa3d065b5c207177112808765b01201b0e479bd52ceece2b5b1156b"
+    },
+    "src-GEN-001": {
+      "kind": "opaque",
+      "kind_tag": "nsr_emission_source_anchor",
+      "locator": {
+        "citation_authority": "US EPA / 40 CFR Part 60 Subpart IIII (NSPS) by reference to 40 CFR Part 1039 Tier 4 Final standards",
+        "citation_url": "https://www.ecfr.gov/current/title-40/chapter-I/subchapter-C/part-60/subpart-IIII",
+        "factor_basis": "engine_oem_test_certificate_synthetic_placeholder",
+        "factor_source": "synthetic-engine-oem-test-cert/tier4f-stationary-diesel-gt750hp",
+        "source_id": "GEN-001",
+        "source_type": "diesel_genset_tier4f"
+      },
+      "source_cid": "sha256:d660ed064c8cbb4f44e7f96f3e58182952aa99cce448f1ed6ae6cf9d57be3ddd"
+    },
+    "src-TRB-001": {
+      "kind": "opaque",
+      "kind_tag": "nsr_emission_source_anchor",
+      "locator": {
+        "citation_authority": "US EPA / 40 CFR Part 60 Subpart KKKK (NSPS for stationary combustion turbines)",
+        "citation_url": "https://www.ecfr.gov/current/title-40/chapter-I/subchapter-C/part-60/subpart-KKKK/subject-group-ECFR19767a6b7b4579c/section-60.4320",
+        "factor_basis": "realistic_post_aftertreatment_synthetic",
+        "factor_source": "synthetic-turbine-oem-test-cert/lean-premix-50mw-scr",
+        "source_id": "TRB-001",
+        "source_type": "combustion_turbine_subpart_kkkk"
+      },
+      "source_cid": "sha256:d660ed064c8cbb4f44e7f96f3e58182952aa99cce448f1ed6ae6cf9d57be3ddd"
+    }
+  },
+  "payload": {},
+  "schema_version": "vcp-v1.1-canary4",
+  "spec_files": {},
+  "typed_checks": [
+    "file_integrity_many_small",
+    "re_derivation_invocation"
+  ]
+}

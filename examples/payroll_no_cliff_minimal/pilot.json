@@ -1,0 +1,22 @@
+{
+  "schema": "pilot.v1",
+  "pilot": "payroll_no_cliff_minimal",
+  "title": "payroll_no_cliff_minimal — whole-domain withholding monotonicity (S2; the verifier searches, it does not compare)",
+  "domain": "payroll_withholding_schedule_safety",
+  "expected_verdict": "PASS",
+  "bundle_count": 1,
+  "has_top_level_manifest": true,
+  "has_build_script": true,
+  "schema_versions": ["vcp-v1.1-canary4"],
+  "typed_checks": [
+    "spec_sha_pin",
+    "file_integrity_many_small",
+    "dispatch_record_wellformed",
+    "refinement_discharge"
+  ],
+  "attack_classes_covered": [
+    "discharge_status_forged_no_key",
+    "income_cliff_marginal_rate_over_100_divergence"
+  ],
+  "last_verified": "2026-05-31"
+}

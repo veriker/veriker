@@ -1,0 +1,12 @@
+{
+  "spec_id": "caselaw.citation.gate.v1",
+  "description": "Auditor binding spec for the case-law citation credibility gate (Axis-2 spec-pinned dispatch). The representative re-derived output is the gate verdict object {decision, citations:[{id, reporter_cite, status}]} from outputs/gate_verdict.json. It is recomputed by resolving each asserted reporter cite against the rooted court-record corpus (corpus/rooted_records.json) and testing the producer's quoted holding for verbatim membership in the resolved record's holding text (assertions/citation_assertions.json): absent cite -> UNRESOLVED, resolved-but-quote-not-found -> MISQUOTE, else ROOTED; decision = AUTO_APPROVE iff every citation is ROOTED else ROUTE_TO_HUMAN. The resolve + misquote rule lives in the verifier primitive (caselaw_gate_recompute); the comparator is pinned HERE by the auditor (exact, no params -- the whole verdict object compared element-wise), not producer-asserted. A producer who ships a spec the auditor did not anchor (different SHA / different primitive_id / weaker comparator) gets a SHA the anchor does not list, so dispatch fails closed. The auditor anchors the METHOD; that the corpus records are genuine court records is a trust-root (L-pillar) concern documented in the pilot README.",
+  "types": {
+    "caselaw_gate_verdict": {
+      "primitive_id": "caselaw_gate_recompute",
+      "comparator": {
+        "kind": "exact"
+      }
+    }
+  }
+}

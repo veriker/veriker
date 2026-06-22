@@ -1,0 +1,15 @@
+{
+  "schema": "pilot.v1",
+  "pilot": "caselaw_citation_gate",
+  "title": "caselaw_citation_gate — Verbatim-Rooted Case-Law Citation Credibility Gate (Axis-2 spec-pinned)",
+  "domain": "legal_proofs",
+  "expected_verdict": "PASS",
+  "bundle_count": 0,
+  "has_top_level_manifest": false,
+  "has_build_script": true,
+  "schema_versions": ["vcp-v1.1-canary4"],
+  "typed_checks": ["file_integrity_many_small", "caselaw_gate_attestation"],
+  "attack_classes_covered": ["rederivation_mismatch", "evidence_tamper", "weak_spec_substitution", "attestation_forge", "trust_anchor_swap"],
+  "rooting_authorities": ["courtlistener", "caselaw_access_project"],
+  "last_verified": "2026-06-01"
+}

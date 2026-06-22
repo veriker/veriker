@@ -1,0 +1,19 @@
+# V-Kernel audit bundles pin a per-file SHA-256 in each manifest.json. On
+# Windows, core.autocrlf=true rewrites LF->CRLF at checkout, which mutates the
+# bytes and breaks committed-bundle verification (FileSHAMismatch). Force LF on
+# all text so the working-tree bytes match the SHA-pinned (LF) bytes regardless
+# of the cloner's autocrlf setting. Binary files are auto-detected and left
+# untouched; the explicit rules below guard known-binary pilot payloads against
+# any future EOL filter.
+* text=auto eol=lf
+
+*.pyc binary
+*.bin binary
+*.pcm binary
+*.wav binary
+*.png binary
+*.jpg binary
+*.gz binary
+*.zip binary
+*.tar binary
+*.db binary

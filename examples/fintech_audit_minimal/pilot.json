@@ -1,0 +1,14 @@
+{
+  "schema": "pilot.v1",
+  "pilot": "fintech_audit_minimal",
+  "title": "fintech_audit_minimal — V-Kernel S0 Pilot: Bank Policy Compliance Audit",
+  "domain": "fintech_audit",
+  "expected_verdict": "PASS",
+  "bundle_count": 0,
+  "has_top_level_manifest": false,
+  "has_build_script": true,
+  "schema_versions": [],
+  "typed_checks": [],
+  "attack_classes_covered": [],
+  "last_verified": null
+}

@@ -1,0 +1,8 @@
+{
+  "name": "hyperframes-render-minimal-fixture",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "render": "npx --yes hyperframes@0.6.52 render"
+  }
+}

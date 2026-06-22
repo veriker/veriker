@@ -1,0 +1,1 @@
+[{"name":"cough","severity":3,"symptom_id":"sym-001"},{"name":"fever","severity":4,"symptom_id":"sym-002"},{"name":"chest_pain","severity":5,"symptom_id":"sym-003"},{"name":"headache","severity":2,"symptom_id":"sym-004"},{"name":"fatigue","severity":3,"symptom_id":"sym-005"}]

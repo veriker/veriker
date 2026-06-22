@@ -1,0 +1,12 @@
+{
+  "spec_id": "prior_auth.v1",
+  "description": "Auditor binding spec for the health-plan AI prior-authorization re-derivation (Axis-2 spec-pinned dispatch). The representative re-derived output is the ordered list of per-request {model_recommendation, matched_rule_id} medical-necessity verdicts (the rule-tree half of payload/prior_auth_decisions.json — the HMAC provider-attestation half is out of scope for this binding). Re-derivation reads each prior-auth request from clinical/findings.jsonl (in file order) and the committed plan rules from clinical/plan_rules.json, then for each request walks the rules sorted by rule_id and returns the first rule whose procedure_category, required_diagnoses (all present), required_prior_treatments (all present), and optional max_lab_value comparator (>= / <=) checks all pass — emitting that rule's verdict as model_recommendation and its rule_id as matched_rule_id; if no rule matches the verdict is deny with matched_rule_id null. The replay rule (rule_id-sorted first-match, condition semantics) lives in the verifier primitive (prior_auth_recompute); the comparator is pinned HERE by the auditor (exact), not producer-asserted. A producer who ships a weaker spec gets a SHA the anchor does not list, so dispatch fails closed.",
+  "types": {
+    "prior_auth_decisions": {
+      "primitive_id": "prior_auth_recompute",
+      "comparator": {
+        "kind": "exact"
+      }
+    }
+  }
+}

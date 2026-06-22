@@ -1,0 +1,90 @@
+# Public OSS drop of Veriker — the open-tier audit-bundle verifier (Apache-2.0).
+#
+# Open-tier packaging for the standalone public repository. The closed tiers are
+# physically removed from the exported tree before this file is used, so the
+# packages.find include glob below cannot pick them up.
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "veriker"
+version = "0.1.3"
+description = "Veriker — re-derivable verification of attested artifacts: recompute the answer, don't trust the claim (open tier)."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+dependencies = [
+    # Signature / hashing primitives used across the verifier + substrate.
+    "cryptography>=42",
+    # RFC 8785 JSON Canonicalization Scheme — canonical bytes for hashing/signing.
+    # The substrate imports the `rfc8785` module (audit_bundle/revocation.py,
+    # emitter/pipeline.py, dsse tests); `jcs` is a different PyPI distribution and
+    # is NOT imported anywhere in the open tree.
+    "rfc8785>=0.1.4",
+    # C18 substrate verifier TUF client (audit_bundle/extensions/c18_tuf_client.py).
+    # python-tuf is the IETF + Sigstore canonical reference (MIT). The stdlib-only
+    # veriker.cli.verify does NOT import this — it loads on the network-connected
+    # substrate verify path only (two-verifier boundary).
+    "tuf>=6.0,<8",
+    # C19.C Layer B substrate: BLS draft-06 aggregation (py_ecc) + deterministic
+    # CBOR (cbor2, RFC 8949 §4.2.1) for nonce-binding preimages.
+    "py_ecc>=7",
+    "cbor2>=5.6",
+]
+
+[project.scripts]
+# `veriker --bundle-dir ...` — the offline bundle verifier.
+# veriker.cli.verify.main() reads argv and returns the ADR-D8 exit code
+# (0 OK / 1 REJECT / 2 ERROR); setuptools wraps it as sys.exit(main()).
+# Equivalent to `python -m veriker` (or `python -m veriker.cli.verify`).
+veriker = "veriker.cli.verify:main"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "hypothesis>=6",
+    # COSE primitives for the c19 cross-host extension tests
+    # (tests/extensions/c19/*): pycose provides the OKP/EdDSA keys + Sign1 used
+    # to build and tamper cross-host envelopes. Optional at runtime (the verifier
+    # core is stdlib-only); required only to run that test slice.
+    "pycose>=1.1",
+    # SMT solver for the refinement-discharge tests (tests/test_discharge/*,
+    # test_refinement_discharge_*). The core verify path does not import z3; these
+    # tests exercise the discharge re-derivation lane and need the solver present.
+    "z3-solver>=4.12",
+]
+# ES output mode (Exploratory Synthesis failure-mode lint) is OPTIONAL and is not
+# advertised as an installable extra: it needs the separate `nexi-methodology`
+# package (Apache-2.0), which is not yet published to PyPI. es_pipeline.py
+# lazy-imports it, so the core verifier imports + runs WITHOUT it. To use ES mode,
+# install nexi-methodology from source: `pip install -e <path to nexi-methodology>`.
+# NO `v15` / wasmtime extra in the open tier. The only consumer of wasmtime is
+# the sandboxed execution runtime audit_bundle/effect_runtime/wasm_runner.py (the
+# V15 enforcement axis), which is EXCLUDED from the open drop — only the
+# validation halves (effect_binding, trace_attestation) ship. Advertising a
+# `wasmtime` extra here would be misleading (no module in this drop imports it)
+# and actively harmful: installing it would turn the wasm tests' clean skip into
+# a hard ImportError on the absent module.
+
+[tool.setuptools.packages.find]
+where = ["."]
+# `audit_bundle.coverage` (formerly a top-level `coverage` package — renamed
+# 2026-06-08 so it does not shadow the standard coverage.py library in downstream
+# installs) is covered by the `audit_bundle*` glob. The CLI ships namespaced as
+# `veriker.cli` (the export repackages the internal top-level `cli` under the
+# `veriker` package so the public install does not squat a generic `cli` import).
+include = ["audit_bundle*", "veriker*"]
+
+[tool.setuptools.package-data]
+audit_bundle = ["contract_slots.json"]
+"audit_bundle.extensions" = ["_tuf_root/*.json"]
+"audit_bundle.source_registry" = ["*.json"]
+
+[tool.pytest.ini_options]
+addopts = "--import-mode=importlib"
+pythonpath = ["."]
+# c19 extension tests live under tests/extensions/c19/ (not inside the
+# audit_bundle package — keeps test_*.py out of the shipped wheel).
+testpaths = ["tests"]

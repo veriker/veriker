@@ -1,0 +1,71 @@
+{
+  "schema_version": "vcp-v1.1-canary4",
+  "bundle_id": "provenance-upgrade-minimal-rc",
+  "created_at": "2026-05-30T00:00:00Z",
+  "files": {
+    "evidence/source_table.json": "f8669406e47f5de244974d672125d1cacbd2f5460d4c5e3d2efaaddb64eff1c3",
+    "payload/extractions.json": "64308cc4b455bca4082693f89019f321a7623384887e7cceae953c5cbb73d6c0"
+  },
+  "spec_files": {
+    "source_table.json": "f8669406e47f5de244974d672125d1cacbd2f5460d4c5e3d2efaaddb64eff1c3"
+  },
+  "cross_refs": {},
+  "payload": {},
+  "typed_checks": [
+    "spec_sha_pin",
+    "file_integrity_many_small",
+    "dispatch_record_wellformed",
+    "stamp_lattice"
+  ],
+  "dispatch_records": [
+    {
+      "schema_version": "0.1",
+      "op": {
+        "kind": "COMPUTE",
+        "name": "extract_total"
+      },
+      "inputs": [],
+      "outputs": [],
+      "effect": {},
+      "locale": "en-US",
+      "predicates": [
+        "sum(line_items.amount_usd) == claim.value_usd"
+      ],
+      "stamp_declared": "COMPOSED_HYPOTHESIS",
+      "stamp_observed": "COMPOSED_HYPOTHESIS",
+      "stamp_upgrade": {
+        "from_stamp": "COMPOSED_HYPOTHESIS",
+        "to_stamp": "TARGET",
+        "upgrade_reason": "predicate_satisfied",
+        "discharge_obligation_sha": "",
+        "verifier_signature": {
+          "algorithm": "hmac-sha256",
+          "verifier_id": "v-kernel-default",
+          "timestamp_utc": "2026-05-30T00:00:00Z",
+          "bundle_id": "provenance-upgrade-minimal-rc",
+          "record_idx": 0,
+          "from_stamp": "COMPOSED_HYPOTHESIS",
+          "to_stamp": "TARGET",
+          "upgrade_reason": "predicate_satisfied",
+          "discharge_obligation_sha": "",
+          "mac": "0af43f58d7593848c8ddfbd22fc4fe8d60a266795fe7ea5e5815caff6bd6a0f9"
+        }
+      }
+    },
+    {
+      "schema_version": "0.1",
+      "op": {
+        "kind": "COMPUTE",
+        "name": "extract_footnote"
+      },
+      "inputs": [],
+      "outputs": [],
+      "effect": {},
+      "locale": "en-US",
+      "predicates": [],
+      "stamp_declared": "COMPOSED_HYPOTHESIS",
+      "stamp_observed": "COMPOSED_HYPOTHESIS"
+    }
+  ],
+  "aggregate_stamp": "COMPOSED_HYPOTHESIS"
+}

@@ -1,0 +1,62 @@
+{
+  "_comment": "PUBLIC Sigstore STAGING trust anchors (root+intermediate Fulcio CA, CT-log keys, Rekor log keys). Used ONLY by the native-Fulcio STAGING leg in the test/CI path (audit_bundle.extensions.fulcio_identity). NOT production anchors; NOT a runtime trust-environment switch.",
+  "_provenance": "sigstore 4.3.0 wheel -> sigstore/_store/https%3A%2F%2Ftuf-repo-cdn.sigstage.dev/trusted_root.json (TUF-distributed, mediaType vnd.dev.sigstore.trustedroot+json;version=0.1). Regenerate with tests/fixtures/_extract_staging_trust_anchors.py.",
+  "fulcio_roots_pem": [
+    "-----BEGIN CERTIFICATE-----\nMIIB9jCCAXugAwIBAgITDdEJvluliE0AzYaIE4jTMdnFTzAKBggqhkjOPQQDAzAq\nMRUwEwYDVQQKEwxzaWdzdG9yZS5kZXYxETAPBgNVBAMTCHNpZ3N0b3JlMB4XDTIy\nMDMyNTE2NTA0NloXDTMyMDMyMjE2NTA0NVowKjEVMBMGA1UEChMMc2lnc3RvcmUu\nZGV2MREwDwYDVQQDEwhzaWdzdG9yZTB2MBAGByqGSM49AgEGBSuBBAAiA2IABMo9\nBUNk9QIYisYysC24+2OytoV72YiLonYcqR3yeVnYziPt7Xv++CYE8yoCTiwedUEC\nCWKOcvQKRCJZb9ht4Hzy+VvBx36hK+C6sECCSR0x6pPSiz+cTk1f788ZjBlUZaNj\nMGEwDgYDVR0PAQH/BAQDAgEGMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFP9C\nMrpofas6cK/cDNQa4j6Hj2ZlMB8GA1UdIwQYMBaAFP9CMrpofas6cK/cDNQa4j6H\nj2ZlMAoGCCqGSM49BAMDA2kAMGYCMQD+kojuzMwztNay9Ibzjuk//ZL5m6T2OCsm\n45l1lY004pcb984L926BowodoirFMcMCMQDIJtFHhP/1D3a+M3dAGomOb6O4CmTr\ny3TTPbPsAFnv22YA0Y+P21NVoxKDjdu0tkw=\n-----END CERTIFICATE-----\n"
+  ],
+  "fulcio_intermediates_pem": [
+    "-----BEGIN CERTIFICATE-----\nMIICGTCCAaCgAwIBAgITJta/okfgHvjabGm1BOzuhrwA1TAKBggqhkjOPQQDAzAq\nMRUwEwYDVQQKEwxzaWdzdG9yZS5kZXYxETAPBgNVBAMTCHNpZ3N0b3JlMB4XDTIy\nMDQxNDIxMzg0MFoXDTMyMDMyMjE2NTA0NVowNzEVMBMGA1UEChMMc2lnc3RvcmUu\nZGV2MR4wHAYDVQQDExVzaWdzdG9yZS1pbnRlcm1lZGlhdGUwdjAQBgcqhkjOPQIB\nBgUrgQQAIgNiAASosAySWJQ/tK5r8T5aHqavk0oI+BKQbnLLdmOMRXHQF/4Hx9Kt\nNfpcdjH9hNKQSBxSlLFFN3tvFCco0qFBzWYwZtsYsBe1l91qYn/9VHFTaEVwYQWI\nJEEvrs0fvPuAqjajezB5MA4GA1UdDwEB/wQEAwIBBjATBgNVHSUEDDAKBggrBgEF\nBQcDAzASBgNVHRMBAf8ECDAGAQH/AgEAMB0GA1UdDgQWBBRxhjCmFHxib/n31vQF\nGn9f/+tvrDAfBgNVHSMEGDAWgBT/QjK6aH2rOnCv3AzUGuI+h49mZTAKBggqhkjO\nPQQDAwNnADBkAjAM1lbKkcqQlE/UspMTbWNo1y2TaJ44tx3l/FJFceTSdDZ+0W1O\nHHeU4twie/lq8XgCMHQxgEv26xNNiAGyPXbkYgrDPvbOqp0UeWX4mJnLSrBr3aN/\nKX1SBrKQu220FmVL0Q==\n-----END CERTIFICATE-----\n"
+  ],
+  "ctlogs": [
+    {
+      "log_id_hex": "1b7c142a4e992ba7df1e1fc5742454136c157a4cb31c4108a521b8b1abe7bf4c",
+      "key_details": "PKCS1_RSA_PKCS1V5",
+      "key_pem": "-----BEGIN PUBLIC KEY-----\nMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA27A2MPQXm0I0v7/Ly5BI\nauDjRZF5Jor9vU+QheoE2UIIsZHcyYq3slHzSSHy2lLj1ZD2d91CtJ492ZXqnBms\nr4TwZ9jQ05tW2mGIRI8u2DqN8LpuNYZGz/f9SZrjhQQmUttqWmtu3UoLfKz6NbNX\nUnoo+NhZFcFRLXJ8VporVhuiAmL7zqT53cXR3yQfFPCUDeGnRksnlhVIAJc3AHZZ\nSHQJ8DEXMhh35TVv2nYhTI3rID7GwjXXw4ocz7RGDD37ky6p39Tl5NB71gT1eSqh\nZhGHEYHIPXraEBd5+3w9qIuLWlp5Ej/K6Mu4ELioXKCUimCbwy+Cs8UhHFlqcyg4\nAysOHJwIadXIa8LsY51jnVSGrGOEBZevopmQPNPtyfFY3dmXSS+6Z3RD2Gd6oDnN\nGJzpSyEk410Ag5uvNDfYzJLCWX9tU8lIxNwdFYmIwpd89HijyRyoGnoJ3entd63c\nvKfuuix5r+GHyKp1Xm1L5j5AWM6P+z0xigwkiXnt+adexAl1J9wdDxv/pUFEESRF\n4DG8DFGVtbdH6aR1A5/vD4krO4tC1QYUSeyL5Mvsw8WRqIFHcXtgybtxylljvNcG\nMV1KXQC8UFDmpGZVDSHx6v3e/BHMrZ7gjoCCfVMZ/cFcQi0W2AIHPYEMH/C95J2r\n4XbHMRdYXpovpOoT5Ca78gsCAwEAAQ==\n-----END PUBLIC KEY-----\n",
+      "valid_start": "2021-03-14T00:00:00Z",
+      "valid_end": "2022-07-31T00:00:00Z"
+    },
+    {
+      "log_id_hex": "fbe24a38c42ded2277ca75079c27e70e170a3fcff9f09e13b9e32a5ee9371e60",
+      "key_details": "PKIX_ECDSA_P256_SHA_256",
+      "key_pem": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEh99xuRi6slBFd8VUJoK/rLigy4bY\neSYWO/fE6Br7r0D8NpMI94+A63LR/WvLxpUUGBpY8IJA3iU2telag5CRpA==\n-----END PUBLIC KEY-----\n",
+      "valid_start": "2022-07-01T00:00:00Z",
+      "valid_end": "2022-07-31T00:00:00Z"
+    },
+    {
+      "log_id_hex": "2b30bcdc6888c9e2e1d826295e741f4839319602f29c33cb5e4340feb2ac867a",
+      "key_details": "PKIX_ECDSA_P256_SHA_256",
+      "key_pem": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE8gEDKNme8AnXuPBgHjrtXdS6miHq\nc24CRblNEOFpiJRngeq8Ko73Y+K18yRYVf1DXD4AVLwvKyzdNdl5n0jUSQ==\n-----END PUBLIC KEY-----\n",
+      "valid_start": "2022-07-01T00:00:00Z",
+      "valid_end": null
+    },
+    {
+      "log_id_hex": "3e607153746e1892e090b236b14976272f67b44d6f92ce6f77114ab722a0a6b6",
+      "key_details": "PKIX_ECDSA_P256_SHA_256",
+      "key_pem": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEv8+Fp+klTMlOd0FU+eekotPzlaF9\norvv9ZgdLXq5+MmoGThLNigXIapXjW0lujsU6+ZHKZ6UPzSuz+V8YxLoQw==\n-----END PUBLIC KEY-----\n",
+      "valid_start": "2026-01-14T00:00:00Z",
+      "valid_end": null
+    }
+  ],
+  "rekor_tlogs": [
+    {
+      "log_id_hex": "d32f30a3c32d639c2b762205a21c7bb07788e68283a4ae6f42118723a1bea496",
+      "key_details": "PKIX_ECDSA_P256_SHA_256",
+      "key_pem": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEDODRU688UYGuy54mNUlaEBiQdTE9\nnYLr0lg6RXowI/QV/RE1azBn4Eg5/2uTOMbhB1/gfcHzijzFi9Tk+g1Prg==\n-----END PUBLIC KEY-----\n"
+    },
+    {
+      "log_id_hex": "f30d5a999d92e662484244263f174cb8eacbfe8264bc583d32741799e3825dc9",
+      "key_details": "PKIX_ED25519",
+      "key_pem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAPn+AREHoBaZ7wgS1zBqpxmLSGnyhxXj4lFxSdWVB8o8=\n-----END PUBLIC KEY-----\n"
+    },
+    {
+      "log_id_hex": "29f4a2497da244bca12bad925152f8eef55caaa471fd101ec292899bc21d653a",
+      "key_details": "PKIX_ED25519",
+      "key_pem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAkrA8Ou2FtN7kYXCP/lpvF8vQrvh4nj+91+PWOGGzfGc=\n-----END PUBLIC KEY-----\n"
+    },
+    {
+      "log_id_hex": "d3d3a70ca130eff8696626153e84d1cd16e0947934b3296c528bde8274549496",
+      "key_details": "PKIX_ED25519",
+      "key_pem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAlD3dVc8yaP25mPtT/sJ59D3LLxGBgW/qYrM6x6KmOqk=\n-----END PUBLIC KEY-----\n"
+    }
+  ]
+}

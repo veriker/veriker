@@ -1,0 +1,12 @@
+{
+  "spec_id": "streaming.v1",
+  "description": "Auditor binding spec for the streaming_minimal tumbling-window re-derivation (Axis-2 spec-pinned dispatch). The representative re-derived output is the per-window aggregate list from payload/checkpoint.json (the ordered list of window dicts {window_start_ms, window_end_ms, aggregate, event_count}). It is recomputed by replaying the committed event stream (events/stream.jsonl) through event-time tumbling-window aggregation per the committed windowing spec (spec/segmentation.json: window_size_ms + aggregator + late_event_policy), bucketing each event into window index timestamp_ms // window_size_ms, summing per window, and emitting windows in ascending window_start_ms. The aggregation rule lives in the verifier primitive (streaming_recompute); the comparator is pinned HERE by the auditor (exact, no params — an ordered list compared element-wise), not producer-asserted. A producer who ships a spec the auditor did not anchor (different SHA / different primitive_id) gets a SHA the anchor does not list, so dispatch fails closed.",
+  "types": {
+    "streaming_window_aggregates": {
+      "primitive_id": "streaming_recompute",
+      "comparator": {
+        "kind": "exact"
+      }
+    }
+  }
+}

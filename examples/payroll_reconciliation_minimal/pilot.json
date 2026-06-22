@@ -1,0 +1,29 @@
+{
+  "schema": "pilot.v1",
+  "pilot": "payroll_reconciliation_minimal",
+  "title": "payroll_reconciliation_minimal — Audit Bundle Quick-Start",
+  "domain": "government_payroll_reconciliation",
+  "expected_verdict": "PASS",
+  "bundle_count": 1,
+  "has_top_level_manifest": true,
+  "has_build_script": true,
+  "schema_versions": ["vcp-v1.1-canary4"],
+  "typed_checks": [
+    "spec_sha_pin",
+    "file_integrity_many_small",
+    "payroll_re_derivation",
+    "coverage_sum_invariant",
+    "dispatch_record_wellformed",
+    "refinement_discharge"
+  ],
+  "attack_classes_covered": [
+    "input_byte_tamper_no_resha",
+    "clawback_forgery_sha_consistent",
+    "net_pay_forgery_sha_consistent",
+    "coverage_sum_mismatch",
+    "discharge_status_forged_no_key",
+    "proof_obligation_sha_mismatch",
+    "discharge_status_verifier_divergence"
+  ],
+  "last_verified": "2026-05-31"
+}
