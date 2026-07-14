@@ -1,0 +1,97 @@
+{
+  "_status": "BOOTSTRAP — NOT PRODUCTION-SIGNED. The oci_digest_at_v0_3_cut / slsa_provenance_digest_at_v0_3_cut placeholder values below are filled at the v0.3.0-rc1 release-tag-cut ceremony (release.yml step 8a); see _tuf_root/README.md. The C18 marker gate (tests/test_synthetic_c18_marker_gate.py) fails closed on these placeholders under REQUIRE_C18_HARDENING=1 until the ceremony runs.",
+  "schema": "v-kernel-audit-bundle/plugin-allowlist/v0.3",
+  "spec_version": "1.0.31",
+  "role_name": "plugin-allowlist",
+  "role_separation_note": "Separate TUF role from the C18 release role; under the C18 TUF feed but distinct `targets` entry. Plugin allowlist rotation is decoupled from release cadence — adding a plugin requires bump-+-resign-+-publish ceremony per the Pass-1 tightening item 11 disposition.",
+  "comment_cv5_disposition": "Closes Pass-1 CV5 (runtime-loaded plugins outside OCI digest). Each plugin is shipped as an OCI artifact pinned by digest, cosign-signed with Fulcio cert, SLSA-3 attested, AND admitted ONLY when present in this TUF-signed allowlist. The c18_plugin_oci_loader.py module (c18-016) consumes this file.",
+  "registry_org_allowlist": [
+    "ghcr.io/veriker/"
+  ],
+  "registry_org_allowlist_disposition": "Hard-coded to ghcr.io/veriker/. Adding another registry/org requires bumping this allowlist and re-signing it under the plugin-allowlist TUF role. The c18_plugin_oci_loader.py module refuses to load on a registry-org mismatch (raises PLUGIN_REGISTRY_ORG_NOT_ALLOWLISTED).",
+  "entries": {
+    "spec_sha_pin": {
+      "module": "audit_bundle.plugins.spec_sha_pin",
+      "oci_artifact": "ghcr.io/veriker/veriker-plugins/spec-sha-pin:v0.3.0",
+      "oci_digest_at_v0_3_cut": "sha256:TBD-FILLED-BY-RELEASE-YML-STEP-8A",
+      "cosign_cert_identity": "https://github.com/veriker/veriker/.github/workflows/release.yml@refs/tags/v0.3.0",
+      "slsa_provenance_digest_at_v0_3_cut": "sha256:TBD-FILLED-BY-SLSA-GITHUB-GENERATOR",
+      "purpose": "Validates referenced spec SHA pins against the manifest-declared values (V-Kernel Phase-1 substrate plugin)"
+    },
+    "three_set_sum_invariant": {
+      "module": "audit_bundle.plugins.three_set_sum_invariant",
+      "oci_artifact": "ghcr.io/veriker/veriker-plugins/three-set-sum-invariant:v0.3.0",
+      "oci_digest_at_v0_3_cut": "sha256:TBD-FILLED-BY-RELEASE-YML-STEP-8A",
+      "cosign_cert_identity": "https://github.com/veriker/veriker/.github/workflows/release.yml@refs/tags/v0.3.0",
+      "slsa_provenance_digest_at_v0_3_cut": "sha256:TBD-FILLED-BY-SLSA-GITHUB-GENERATOR",
+      "purpose": "Three-set-sum invariant verifier (98x perf-optimized per memory project_three_set_sum_invariant_hoist_2026_05_14)"
+    },
+    "dispatch_record_wellformed": {
+      "module": "audit_bundle.plugins.dispatch_record_wellformed",
+      "oci_artifact": "ghcr.io/veriker/veriker-plugins/dispatch-record-wellformed:v0.3.0",
+      "oci_digest_at_v0_3_cut": "sha256:TBD-FILLED-BY-RELEASE-YML-STEP-8A",
+      "cosign_cert_identity": "https://github.com/veriker/veriker/.github/workflows/release.yml@refs/tags/v0.3.0",
+      "slsa_provenance_digest_at_v0_3_cut": "sha256:TBD-FILLED-BY-SLSA-GITHUB-GENERATOR",
+      "purpose": "Validates dispatch records are structurally well-formed (V-Kernel substrate plugin)"
+    },
+    "stamp_lattice": {
+      "module": "audit_bundle.plugins.stamp_lattice",
+      "oci_artifact": "ghcr.io/veriker/veriker-plugins/stamp-lattice:v0.3.0",
+      "oci_digest_at_v0_3_cut": "sha256:TBD-FILLED-BY-RELEASE-YML-STEP-8A",
+      "cosign_cert_identity": "https://github.com/veriker/veriker/.github/workflows/release.yml@refs/tags/v0.3.0",
+      "slsa_provenance_digest_at_v0_3_cut": "sha256:TBD-FILLED-BY-SLSA-GITHUB-GENERATOR",
+      "purpose": "Stamp lattice ordering verifier (V-Kernel substrate plugin)"
+    },
+    "refinement_discharge": {
+      "module": "audit_bundle.plugins.refinement_discharge",
+      "oci_artifact": "ghcr.io/veriker/veriker-plugins/refinement-discharge:v0.3.0",
+      "oci_digest_at_v0_3_cut": "sha256:TBD-FILLED-BY-RELEASE-YML-STEP-8A",
+      "cosign_cert_identity": "https://github.com/veriker/veriker/.github/workflows/release.yml@refs/tags/v0.3.0",
+      "slsa_provenance_digest_at_v0_3_cut": "sha256:TBD-FILLED-BY-SLSA-GITHUB-GENERATOR",
+      "purpose": "Refinement discharge proof verifier (V-Kernel substrate plugin)"
+    },
+    "file_integrity_many_small": {
+      "module": "audit_bundle.plugins.file_integrity_many_small",
+      "oci_artifact": "ghcr.io/veriker/veriker-plugins/file-integrity-many-small:v0.3.0",
+      "oci_digest_at_v0_3_cut": "sha256:TBD-FILLED-BY-RELEASE-YML-STEP-8A",
+      "cosign_cert_identity": "https://github.com/veriker/veriker/.github/workflows/release.yml@refs/tags/v0.3.0",
+      "slsa_provenance_digest_at_v0_3_cut": "sha256:TBD-FILLED-BY-SLSA-GITHUB-GENERATOR",
+      "purpose": "File integrity verifier optimized for many small files (V-Kernel substrate plugin; §C9 strict-SHA path)"
+    },
+    "monotone_growth": {
+      "module": "audit_bundle.plugins.monotone_growth",
+      "oci_artifact": "ghcr.io/veriker/veriker-plugins/monotone-growth:v0.3.0",
+      "oci_digest_at_v0_3_cut": "sha256:TBD-FILLED-BY-RELEASE-YML-STEP-8A",
+      "cosign_cert_identity": "https://github.com/veriker/veriker/.github/workflows/release.yml@refs/tags/v0.3.0",
+      "slsa_provenance_digest_at_v0_3_cut": "sha256:TBD-FILLED-BY-SLSA-GITHUB-GENERATOR",
+      "purpose": "Monotone-growth invariant verifier (V-Kernel substrate plugin)"
+    },
+    "falsification_negative_test": {
+      "module": "audit_bundle.plugins.falsification_negative_test",
+      "oci_artifact": "ghcr.io/veriker/veriker-plugins/falsification-negative-test:v0.3.0",
+      "oci_digest_at_v0_3_cut": "sha256:TBD-FILLED-BY-RELEASE-YML-STEP-8A",
+      "cosign_cert_identity": "https://github.com/veriker/veriker/.github/workflows/release.yml@refs/tags/v0.3.0",
+      "slsa_provenance_digest_at_v0_3_cut": "sha256:TBD-FILLED-BY-SLSA-GITHUB-GENERATOR",
+      "purpose": "Falsification negative-test verifier (V-Kernel substrate plugin)"
+    },
+    "re_derivation_invocation": {
+      "module": "audit_bundle.plugins.re_derivation_invocation",
+      "oci_artifact": "ghcr.io/veriker/veriker-plugins/re-derivation-invocation:v0.3.0",
+      "oci_digest_at_v0_3_cut": "sha256:TBD-FILLED-BY-RELEASE-YML-STEP-8A",
+      "cosign_cert_identity": "https://github.com/veriker/veriker/.github/workflows/release.yml@refs/tags/v0.3.0",
+      "slsa_provenance_digest_at_v0_3_cut": "sha256:TBD-FILLED-BY-SLSA-GITHUB-GENERATOR",
+      "purpose": "Re-derivation invocation verifier (V-Kernel substrate plugin)"
+    },
+    "source_attributes_consistency": {
+      "module": "audit_bundle.plugins.source_attributes_consistency",
+      "oci_artifact": "ghcr.io/veriker/veriker-plugins/source-attributes-consistency:v0.3.0",
+      "oci_digest_at_v0_3_cut": "sha256:TBD-FILLED-BY-RELEASE-YML-STEP-8A",
+      "cosign_cert_identity": "https://github.com/veriker/veriker/.github/workflows/release.yml@refs/tags/v0.3.0",
+      "slsa_provenance_digest_at_v0_3_cut": "sha256:TBD-FILLED-BY-SLSA-GITHUB-GENERATOR",
+      "purpose": "Source attributes consistency verifier (V-Kernel substrate plugin)"
+    }
+  },
+  "entry_count": 10,
+  "honest_hedge": "v0.3 ships the allowlist STRUCTURE — TUF role separation, 10 V-Kernel substrate plugins enumerated with their cosign claim identities, registry org hard-pinned to ghcr.io/veriker/. The actual OCI digest + SLSA provenance digest fields are filled at release-tag-cut by .github/workflows/release.yml step 8a (c18-007 + this c18-010 addition); pre-cut they carry the TBD-FILLED-BY-RELEASE-YML-STEP-8A sentinel. The c18_plugin_oci_loader.py module (c18-016) fail-closes when it encounters TBD sentinels in production mode.",
+  "dev_mode_bypass_note": "Direct-import path (`--allow-direct-import` CLI flag in c18-016) is dev-only. PRODUCTION verifier runs (the OCI image built by c18-001 flake) hard-fail on direct imports per CV5 disposition."
+}

@@ -1,0 +1,21 @@
+{
+  "schema": "pilot.v1",
+  "pilot": "citation_integrity_minimal",
+  "title": "citation integrity minimal",
+  "domain": "citation_integrity",
+  "expected_verdict": "PASS",
+  "bundle_count": 0,
+  "has_top_level_manifest": false,
+  "has_build_script": false,
+  "schema_versions": [
+    "vcp-v1.1-canary4"
+  ],
+  "typed_checks": [],
+  "attack_classes_covered": [
+    "fragment_misquote",
+    "fragment_offset_out_of_bounds",
+    "segmenter_mismatch",
+    "fragment_source_unresolvable"
+  ],
+  "last_verified": "2026-06-02"
+}

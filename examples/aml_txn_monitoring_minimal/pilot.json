@@ -1,0 +1,14 @@
+{
+  "schema": "pilot.v1",
+  "pilot": "aml_txn_monitoring_minimal",
+  "title": "aml_txn_monitoring_minimal",
+  "domain": "bank_aml_monitoring",
+  "expected_verdict": "PASS",
+  "bundle_count": 0,
+  "has_top_level_manifest": false,
+  "has_build_script": true,
+  "schema_versions": [],
+  "typed_checks": [],
+  "attack_classes_covered": [],
+  "last_verified": null
+}

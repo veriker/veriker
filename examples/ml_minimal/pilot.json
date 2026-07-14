@@ -1,0 +1,14 @@
+{
+  "schema": "pilot.v1",
+  "pilot": "ml_minimal",
+  "title": "ml_minimal — Audit Bundle Quick-Start",
+  "domain": "ml_general",
+  "expected_verdict": "PASS",
+  "bundle_count": 0,
+  "has_top_level_manifest": false,
+  "has_build_script": true,
+  "schema_versions": [],
+  "typed_checks": [],
+  "attack_classes_covered": [],
+  "last_verified": null
+}

@@ -1,0 +1,13 @@
+{
+  "spec_id": "climate.emission.v1",
+  "description": "Auditor binding spec for climate Scope-3 emission re-derivation. Comparator is exact (deterministic fixed-point arithmetic). Authority-pinned, not producer-asserted (Path-beta).",
+  "types": {
+    "climate_total_scope3": {
+      "primitive_id": "climate_emission_recompute",
+      "comparator": {
+        "kind": "exact",
+        "params": {}
+      }
+    }
+  }
+}

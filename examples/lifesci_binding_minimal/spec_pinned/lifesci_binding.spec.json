@@ -1,0 +1,15 @@
+{
+  "spec_id": "lifesci_binding.v1",
+  "description": "Auditor binding spec for the drug-binding affinity re-derivation (Axis-2 spec-pinned dispatch). The representative re-derived output is the scalar binding-affinity prediction (payload/binding_prediction.json::affinity_pred), computed by stable crc32 character-bucket feature hashing (32 buckets) over the committed SMILES string and target sequence, dot-producted against the committed w_compound[32] / w_target[32] weights, plus bias, rounded to 6dp. The hashing + scoring rule lives in the verifier primitive (lifesci_binding_recompute); the comparator and tolerance are pinned HERE by the auditor (scalar_epsilon, epsilon=1e-6), not producer-asserted. A producer who ships a weaker spec gets a SHA the anchor does not list, so dispatch fails closed.",
+  "types": {
+    "lifesci_binding_affinity": {
+      "primitive_id": "lifesci_binding_recompute",
+      "comparator": {
+        "kind": "scalar_epsilon",
+        "params": {
+          "epsilon": 1e-6
+        }
+      }
+    }
+  }
+}

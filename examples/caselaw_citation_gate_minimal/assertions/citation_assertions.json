@@ -1,0 +1,26 @@
+[
+  {
+    "id": "C-01",
+    "reporter_cite": "573 U.S. 208",
+    "case_name": "Alice Corp. v. CLS Bank International",
+    "quoted_holding": "an abstract idea does not become patent eligible merely by reciting a generic computer"
+  },
+  {
+    "id": "C-02",
+    "reporter_cite": "43 F.4th 1207",
+    "case_name": "Thaler v. Vidal",
+    "quoted_holding": "an inventor under the Patent Act must be a natural person"
+  },
+  {
+    "id": "C-03",
+    "reporter_cite": "134 F.4th 1205",
+    "case_name": "Recentive Analytics, Inc. v. Fox Corp.",
+    "quoted_holding": "applying generic machine learning to a new data environment is patent eligible under section 101"
+  },
+  {
+    "id": "C-04",
+    "reporter_cite": "142 F.4th 880",
+    "case_name": "Synapse AI, Inc. v. Cortex Labs, Inc.",
+    "quoted_holding": "training a neural network on proprietary data is presumptively patent eligible"
+  }
+]

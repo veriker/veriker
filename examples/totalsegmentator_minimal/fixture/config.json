@@ -1,0 +1,7 @@
+{
+  "schema": "totalsegmentator-config-v1",
+  "task": "total",
+  "fast": true,
+  "ml": true,
+  "device": "cpu"
+}

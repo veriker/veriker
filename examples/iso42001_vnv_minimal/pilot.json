@@ -1,0 +1,36 @@
+{
+  "schema": "pilot.v1",
+  "pilot": "iso42001_vnv_minimal",
+  "title": "iso42001_vnv_minimal — ISO/IEC 42001 A.6 V&V Metric Re-Derivation (Axis-2 spec-pinned dispatch)",
+  "domain": "ai_governance_iso42001",
+  "expected_verdict": "PASS",
+  "bundle_count": 1,
+  "has_top_level_manifest": true,
+  "has_build_script": true,
+  "schema_versions": [
+    "vcp-v1.1-canary4"
+  ],
+  "typed_checks": [
+    "file_integrity_many_small"
+  ],
+  "attack_classes_covered": [
+    "spec_pinned:tampered_value",
+    "spec_pinned:input_tamper",
+    "spec_pinned:weaker_spec_substitution",
+    "spec_pinned:no_anchor"
+  ],
+  "spec_pinned_dispatch": {
+    "output_id": "model_validation_auc",
+    "type": "model_validation_auc",
+    "conforms_to": "spec/iso42001_vnv.spec.json",
+    "comparator_kind": "scalar_epsilon",
+    "epsilon": 1e-9,
+    "binding_spec": "spec_pinned/iso42001_vnv.spec.json"
+  },
+  "primitive_id": "iso42001_auc_recompute",
+  "honest_roc_auc": 0.953125,
+  "fixture_model_id": "credit-default-clf-v3",
+  "fixture_test_items": 16,
+  "claim_boundary": "Proves the reported A.6 V&V metric is re-derivable from the declared (label, score) test set and tamper-evident under the auditor's pinned method. NOT a judgement that the model/test-set is fit for purpose, and NOT ISO/IEC 42001 control conformance. Synthetic data; no customer.",
+  "last_verified": null
+}

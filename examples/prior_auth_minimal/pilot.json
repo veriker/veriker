@@ -1,0 +1,14 @@
+{
+  "schema": "pilot.v1",
+  "pilot": "prior_auth_minimal",
+  "title": "prior_auth_minimal — Health-Plan AI Prior-Authorization Audit Bundle",
+  "domain": "health_insurance_um",
+  "expected_verdict": "PASS",
+  "bundle_count": 0,
+  "has_top_level_manifest": false,
+  "has_build_script": true,
+  "schema_versions": [],
+  "typed_checks": [],
+  "attack_classes_covered": [],
+  "last_verified": null
+}

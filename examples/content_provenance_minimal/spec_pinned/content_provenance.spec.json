@@ -1,0 +1,12 @@
+{
+  "spec_id": "content_provenance.v1",
+  "description": "Auditor binding spec for the content-provenance re-derivation (Axis-2 spec-pinned dispatch). The representative re-derived output is the SHA-256 hex digest of the published content bytes (artifact/content.txt), i.e. content_sha = hashlib.sha256(content_bytes).hexdigest(). The hashing rule lives in the verifier primitive (content_provenance_recompute); the comparator is pinned HERE by the auditor as exact (byte-exact string equality), not producer-asserted. A producer who ships a weaker spec gets a SHA the anchor does not list, so dispatch fails closed. SCOPE: this re-derives WHAT bytes were published and that they are unaltered since signing; it is NOT truth-detection.",
+  "types": {
+    "content_sha": {
+      "primitive_id": "content_provenance_recompute",
+      "comparator": {
+        "kind": "exact"
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "_comment": "SYNTHETIC Sigstore-shaped keyless bundle for the native-Fulcio leg test (audit_bundle.extensions.fulcio_identity). NOT a real captured Sigstore entry; see tests/fixtures/_generate_synthetic_fulcio.py for why a synthetic public-SAN chain is used here while tests/fixtures/sigstore_staging_bundle_v0_3.json keeps the REAL captured entry for the rekor inclusion-proof grounding.",
+  "mediaType": "application/vnd.dev.sigstore.bundle.v0.3+json",
+  "verificationMaterial": {
+    "certificate": {
+      "rawBytes": "MIICaTCCAhCgAwIBAgIBAzAKBggqhkjOPQQDAjAwMS4wLAYDVQQDDCV2ZXJpa2VyIHN5bnRoZXRpYyBmdWxjaW8gaW50ZXJtZWRpYXRlMB4XDTI2MDYwNTE5MzgyMVoXDTI2MDYwNTE5NDgyMVowADBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABPOVHmrSoeM7jz60SxcDIMx3r63UBL/9STZ9uI6eOrOosnxBiDZa8aiTko0bLSHVpT5gG5vEMFXn7bblpXTwnt2jggFJMIIBRTAMBgNVHRMBAf8EAjAAMG0GA1UdEQEB/wRjMGGGX2h0dHBzOi8vZ2l0aHViLmNvbS92ZXJpa2VyL3ZlcmlrZXIvLmdpdGh1Yi93b3JrZmxvd3Mva2V5bGVzcy1hdHRlc3Qtc3RhZ2luZy55bWxAcmVmcy9oZWFkcy9tYWluMDkGCisGAQQBg78wAQEEK2h0dHBzOi8vdG9rZW4uYWN0aW9ucy5naXRodWJ1c2VyY29udGVudC5jb20wgYoGCisGAQQB1nkCBAIEfAR6AHgAdgCDjuyEXHMXeXqdGVB6dflAEEy7bEE8CczqFn40I5nhsAAAAZ6ZSyvIAAAEAwBHMEUCIDHKa+InWIS1ntYsxhuBjaKioeAc57ManDN4Ci0N6ICEAiEAs+o+kdcWVvnV03XGe6O57N+iZkSsw67zl3rbzsQkb30wCgYIKoZIzj0EAwIDRwAwRAIgF6+Zbn6PmkYkytxvv9KUXQrgsJDQg95C4sHwR8V3HrMCIARg7ZinnTOheVfHtLOTMmmJc26flvLggTniTp0rzy1q"
+    },
+    "tlogEntries": [
+      {
+        "integratedTime": "0"
+      }
+    ]
+  },
+  "messageSignature": {
+    "messageDigest": {
+      "algorithm": "SHA2_256",
+      "digest": "YDaasBC9XHqvxu1DWNqQ88d44p5EcMEW3gsTC+L/qKo="
+    },
+    "signature": "MEUCIFIicr0yh0dzJ/oWDDdWq95/BSAlXqIY+1fk0jMkWV/BAiEAhviLQxzCyAnT8Qrs9T97dol3y3v2Q+HnZp/cuTu6TLc="
+  }
+}

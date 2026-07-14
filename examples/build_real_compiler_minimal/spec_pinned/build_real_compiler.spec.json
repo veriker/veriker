@@ -1,0 +1,12 @@
+{
+  "spec_id": "build_real_compiler.v1",
+  "description": "Auditor-pinned binding for the build_real_compiler pilot. Binds the representative output type 'pyc_sha' (the SHA-256 hex digest of the recompiled mod_a.pyc artifact) to the in-process re-derivation primitive 'build_real_compiler_recompute' and an 'exact' (byte-exact string equality) comparator. The primitive re-compiles sources/mod_a.py with the pinned interpreter via py_compile (CHECKED_HASH invalidation, SOURCE_DATE_EPOCH=0, dfile pinned to base name), guarding first on recipe.cache_tag == sys.implementation.cache_tag (fail-closed on toolchain mismatch). A producer cannot weaken the compilation knobs or the comparison without changing the primitive_id / spec SHA, which the auditor anchor rejects.",
+  "types": {
+    "pyc_sha": {
+      "primitive_id": "build_real_compiler_recompute",
+      "comparator": {
+        "kind": "exact"
+      }
+    }
+  }
+}

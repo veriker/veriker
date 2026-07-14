@@ -1,0 +1,19 @@
+{
+  "schema": "pilot.v1",
+  "pilot": "legal_contract_minimal",
+  "title": "legal_contract_minimal — V-Kernel S0 pilot",
+  "domain": "uncategorized",
+  "expected_verdict": "PASS",
+  "bundle_count": 1,
+  "has_top_level_manifest": true,
+  "has_build_script": true,
+  "schema_versions": [
+    "vcp-v1.1-canary4"
+  ],
+  "typed_checks": [
+    "file_integrity_many_small",
+    "re_derivation_invocation"
+  ],
+  "attack_classes_covered": [],
+  "last_verified": null
+}

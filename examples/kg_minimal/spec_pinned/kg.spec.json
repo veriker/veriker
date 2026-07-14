@@ -1,0 +1,12 @@
+{
+  "spec_id": "kg.v1",
+  "description": "Auditor binding spec for the kg_minimal knowledge-graph path-query re-derivation (Axis-2 spec-pinned dispatch). The representative re-derived output is the answer_nodes collection in payload/query_result.json — the unordered set of node ids reachable by the committed path-query. It is recomputed by a BFS reachability traversal over kg/triples.jsonl from query.start along query.predicate up to query.max_depth hops (excluding start), mirroring the legacy kg_re_derivation pack's _bfs_closure EXACTLY. The traversal rule lives in the verifier primitive (kg_recompute); the comparator is pinned HERE by the auditor (set, no params — order-independent collection equality), not producer-asserted. A producer who ships a spec the auditor did not anchor (different SHA / different primitive_id) gets a SHA the anchor does not list, so dispatch fails closed.",
+  "types": {
+    "kg_answer_nodes": {
+      "primitive_id": "kg_recompute",
+      "comparator": {
+        "kind": "set"
+      }
+    }
+  }
+}

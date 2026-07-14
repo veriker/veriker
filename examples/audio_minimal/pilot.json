@@ -1,0 +1,14 @@
+{
+  "schema": "pilot.v1",
+  "pilot": "audio_minimal",
+  "title": "audio_minimal — VAD Audio Segment Boundary Audit Bundle",
+  "domain": "audio_ml",
+  "expected_verdict": "PASS",
+  "bundle_count": 0,
+  "has_top_level_manifest": false,
+  "has_build_script": true,
+  "schema_versions": [],
+  "typed_checks": [],
+  "attack_classes_covered": [],
+  "last_verified": null
+}

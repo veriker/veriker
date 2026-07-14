@@ -1,0 +1,12 @@
+{
+  "spec_id": "credit_scoring.v1",
+  "description": "Auditor binding spec for the bank consumer-credit decisioning (loan-approval scorecard) re-derivation (Axis-2 spec-pinned dispatch). The representative re-derived output is the ordered per-applicant categorical verdict list — one [applicant_id, tier, decision] triple per applicant, in sorted applicant-file order (sorted glob over applicants/*.json) — derived from payload/credit_decisions.json. Re-derivation replays each applicant's credit attributes (applicants/<APP-ID>.json) through the bundled logistic scorecard coefficients (model/scorecard.json): linear_combination = intercept + sum(coef_i * feature_i) over feature_order, PD = 1/(1+exp(-linear_combination)); then looks up the PD in the bundled threshold table (model/threshold_table.json) where pd_min <= PD < pd_max selects the tier, yielding (tier, decision). The representative output is the categorical verdict only (tier + decision) — exact-safe, no apr_pct float — so the comparator is `exact` (categorical labels do not carry floating-point drift). The replay rule (logistic PD, threshold lookup, sorted applicant order) lives in the verifier primitive (credit_scoring_recompute); the comparator is pinned HERE by the auditor (exact), not producer-asserted. A producer who ships a weaker spec gets a SHA the anchor does not list, so dispatch fails closed.",
+  "types": {
+    "credit_scoring_verdict_list": {
+      "primitive_id": "credit_scoring_recompute",
+      "comparator": {
+        "kind": "exact"
+      }
+    }
+  }
+}

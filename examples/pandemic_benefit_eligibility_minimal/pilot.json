@@ -1,0 +1,24 @@
+{
+  "schema": "pilot.v1",
+  "pilot": "pandemic_benefit_eligibility_minimal",
+  "title": "pandemic_benefit_eligibility_minimal — pandemic benefit eligibility re-derivation",
+  "domain": "government_benefit_eligibility",
+  "expected_verdict": "PASS",
+  "bundle_count": 1,
+  "has_top_level_manifest": false,
+  "has_build_script": true,
+  "schema_versions": ["vcp-v1.1-canary4"],
+  "typed_checks": [
+    "spec_sha_pin",
+    "file_integrity_many_small",
+    "pandemic_eligibility_rederivation",
+    "coverage_sum_invariant"
+  ],
+  "attack_classes_covered": [
+    "ineligible_applicant_approved",
+    "benefit_amount_inflation",
+    "file_sha_mismatch",
+    "signature_tamper"
+  ],
+  "last_verified": "2026-05-29"
+}

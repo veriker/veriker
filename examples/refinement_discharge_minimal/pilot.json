@@ -1,0 +1,24 @@
+{
+  "schema": "pilot.v1",
+  "pilot": "refinement_discharge_minimal",
+  "title": "refinement_discharge_minimal — honest verifier-signed SMT-Z3 discharge with real re-run (S2)",
+  "domain": "refinement_discharge",
+  "expected_verdict": "PASS",
+  "bundle_count": 1,
+  "has_top_level_manifest": true,
+  "has_build_script": true,
+  "schema_versions": ["vcp-v1.1-canary4"],
+  "typed_checks": [
+    "spec_sha_pin",
+    "file_integrity_many_small",
+    "dispatch_record_wellformed",
+    "refinement_discharge"
+  ],
+  "attack_classes_covered": [
+    "discharge_status_forged_no_key",
+    "discharge_status_forged_stripped_signature",
+    "proof_obligation_sha_mismatch",
+    "discharge_status_verifier_divergence"
+  ],
+  "last_verified": "2026-05-31"
+}
